@@ -1,0 +1,5 @@
+nav:
+  - lueminut.md
+  - SSH: ssh
+  - HTTPS: https
+  - ...

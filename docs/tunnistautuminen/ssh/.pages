@@ -1,0 +1,5 @@
+nav:
+    - Yleistä: yleistä.md
+    - SSH: ssh.md
+    - Agentti: sshagent.md
+    - ...

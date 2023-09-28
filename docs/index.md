@@ -1,18 +1,15 @@
-# Welcome to MkDocs
+# How to Git
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+!!! warning
+    For now, this repository contains only Finnish guides, but it may be translated into English in future.
 
-## Commands
+Tämä Material for MkDocs -dokumenttiprojekti sisältää ohjeistukset siihen, kuinka käyttää Gittiä opiskelijana. Kurssin esimerkit perustuvat pitkälti Kamitin ylläpitämään Gitlabiin, mutta samat ohjeet on sovellettavissa Githubiin, Gitlab Cloudiin, muissa organisaatioissa hostattuihin on-prem Gitlab-asennuksiin, Azure DevOpsiin ja niin edelleen.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Mikä on git?
 
-## Project layout
+Itse `git` on Linus Torvaldsin kehittämä versionhallintatyökalu: aiemmin mainitut yritykset tuottavat "git hosting serviceä". Niissä kaikissa toimii siis sama `git` konepellin alla, mutta kukin niistä tarjoaa muita palveluita sen päällä. Ihan vähimmillään ne tarjoavat tunnistautumisen ja jonkin sortin online-portaalin, mutta palveluihin kuuluu myös muun muassa vuokrattavaa pilvirautaa, jolla voi suorittaa koodin testausta. 
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md    # The documentation homepage.
-        index.fi.md # The documentation homepage in Finnish.
-        ...         # Other markdown pages, images and other files.
+!!! tip
+    Tämä sivusto hyödyntää Githubin palvelua nimeltään Github Pages, joka luo Github-projektille julkisesti saatavilla olevan dokumentaation.
+
+Tämän materiaalin syventävänä ja tukevana materiaalina kannattaa lukea muuta dokumentaatio ja/tai kirjallisuutta. Yksi äärimmäisen suositeltu lähde on [Ilmainen Pro Git PDF-kirja](https://git-scm.com/book/en/v2).

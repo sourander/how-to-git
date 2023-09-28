@@ -1,0 +1,1 @@
+Tässä materiaalissa ohjeistetaan toistaiseksi vain SSH-tunnistautuminen. Tämä kansio on placeholder mahdollista tulevaisuuden käyttöä varten. Kun kloonaat repositoriota, varmistathan, että valitset `Clone`-nappulan alta SSH:n.
