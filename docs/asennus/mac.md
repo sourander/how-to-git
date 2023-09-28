@@ -63,7 +63,7 @@ git is /opt/homebrew/bin/git
 
 # Mikäli yllä oleva tuloste viittaa /usr/bin-kansion executableen, aja seuraava
 # komento ja kokeile uusiksi
-rehash
+$ rehash
 ```
 
 ## Valinnainen: Asenna Oh My Zsh

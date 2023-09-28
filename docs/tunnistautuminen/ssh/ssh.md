@@ -24,14 +24,14 @@ Se, minne julkinen avain git-palvelussa lisätään, riippuu palvelusta. Lue pal
 
 ```sh
 # WINDOWS ONLY
-cat ~/.ssh/id_ed25519.pub | clip
+$ cat ~/.ssh/id_ed25519.pub | clip
 
 # macOS ONLY
-tr -d '\n' < ~/.ssh/id_ed25519.pub | pbcopy
+$ tr -d '\n' < ~/.ssh/id_ed25519.pub | pbcopy
 
 # UBUNTU ONLY
-sudo apt install xclip
-xclip -sel clip < ~/.ssh/id_ed25519.pub
+$ sudo apt install xclip
+$ xclip -sel clip < ~/.ssh/id_ed25519.pub
 ```
 
 
@@ -41,7 +41,10 @@ Avainta käytetään jatkossa kaikkiin palveluihin kirjauduttuessa, mikäli se o
 
 ```sh
 # Kamit Repo
-ssh -T ssh://git@repo.kamit.fi:45065
+$ ssh -T ssh://git@repo.kamit.fi:45065
+
+# Github
+$ ssh -T git@github.com
 ```
 
 Mikäli palvelu kysyy salasanaa (ei siis `passphrasea` vaan `password`:ia), ssh-avain ei ole syystä tai toisesta käytössä. Ajoithan aiemmin mainitut `eval` ja `ssh-add` komennot, mikäli olet kopioinut ssh-avaimen toiselta tietokoneelta? Kokeile sulkea ja avata Git Bash terminaali uusiksi.
@@ -56,10 +59,10 @@ Huomaathan, että URI:n on oltava jatkossa muotoa, joka alkaa `ssh://...`, kuten
 
 ```sh
 # Tee näin.
-git clone ssh://git@repo.kamit.fi:<port>/<user-or-group-name>/<repo-project-name>.git
+$ git clone ssh://git@repo.kamit.fi:<port>/<user-or-group-name>/<repo-project-name>.git
 
 # Älä tee näin. Tämä yrittää tunnistautua Git Credential Manager Coren popupilla
-git clone https://repo.kamit.fi/janisou1/test.git
+$ git clone https://repo.kamit.fi/janisou1/test.git
 ```
 
 Repo Kamit käyttää custom TCP-porttia, joten URL:n osatekijät ovat:

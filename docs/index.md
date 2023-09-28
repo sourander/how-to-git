@@ -3,7 +3,7 @@
 !!! warning
     For now, this repository contains only Finnish guides, but it may be translated into English in future.
 
-Tämä Material for MkDocs -dokumenttiprojekti sisältää ohjeistukset siihen, kuinka käyttää Gittiä opiskelijana. Kurssin esimerkit perustuvat pitkälti Kamitin ylläpitämään Gitlabiin, mutta samat ohjeet on sovellettavissa Githubiin, Gitlab Cloudiin, muissa organisaatioissa hostattuihin on-prem Gitlab-asennuksiin, Azure DevOpsiin ja niin edelleen.
+Tämä dokumentaatio sisältää ohjeistukset siihen, kuinka käyttää Gittiä opiskelijana. Kurssin esimerkit perustuvat pitkälti Kamitin ylläpitämään Gitlabiin, mutta samat ohjeet on sovellettavissa Githubiin, Gitlab Cloudiin, muissa organisaatioissa hostattuihin on-prem Gitlab-asennuksiin, Azure DevOpsiin ja niin edelleen. Dokumentaatio on suunniteltu luettavaksi järjestyksessä alusta loppuun: avaa vasemmalla näkyvää navigaatiota ja klikkaa linkit läpi järjestyksessä.
 
 ## Mikä on git?
 

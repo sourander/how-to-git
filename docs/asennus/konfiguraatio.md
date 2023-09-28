@@ -2,7 +2,7 @@ Ennen kuin voit käyttää gittiä versionhallintaan, sinun on **pakko** asettaa
 
 ```bash
 git config --global user.name "Etunimi Sukunimi"
-git config --global user.email "etunimisukunimi@kamk.com"
+git config --global user.email "etunimisukunimi@kamk.fi"
 ```
 
 Tiedot tallentuvat globaaliin konfiguraatiotiedostoon kotikansiossasi. Tiedosto on `~/.gitconfig`.

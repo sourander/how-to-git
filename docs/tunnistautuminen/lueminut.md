@@ -10,5 +10,7 @@ Tyypillisesti Git-palveluihin (GitLab, Github, Bitbucket jne.) voi tunnistautua 
 * SSH-avainpari
     * SSH on suositeltu tunnistautumisen tapa peruskäytössä.
     * Toisin kuin yllä olevissa metodeissa, varsinaista salasanaa/tokenia ei koskaan lähetetä verkon yli palvelimelle. Tämän mahdollistaa asymmetrinen salaus.
+* Oauth
+    * Tähän soleltuu projekti nimeltään [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager). Se asentuu Git for Windowsin mukana, mutta muissa käyttöjärjestelmissä se vaatii hieman työtä ja huolenpitoa.
 
 Mikäli olet epävarma, käytä ssh:ta (tai https:ää). Mikäli olet edistyneempi käyttäjä, voit harkiten käyttää tokeneita sille sopivissa käyttötapauksissa.
