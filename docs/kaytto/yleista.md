@@ -1,0 +1,81 @@
+Tämä luku sisältää muutaman nyrkkisäännön gitin käytöstä, jotka on hyvä pitää mielessä.
+
+
+
+## Dokumentoi kaikki mitä teet (✍️)
+
+Tee `README.md` ja `LICENSE` ja lisäksi tarpeen mukaan jokin wiki/blogi/saitti/muu. Selitä, miksi projekti on olemassa, kuinka sen voi asentaa, kuinka sitä voi ajaa, mitä tekijänoikeuksia/lisenssejä siihen liittyy ja niin edelleen. Mikäli työskentelet jonkin uuden teknologian kanssa, on suositeltavaa luoda jopa `MEMO.md`, johon tallennat historian tekemisestä vaiheista. Tämä auttaa myöhemmässä käyttöönottovaiheessa tai vianselvityksessä merkittävästi.
+
+
+
+## Älä laita suuria binääritiedostoja gittiin (💾)
+
+Tutustu `.gitignore`-tiedostoon. Kyseessä on projektin juuressa, eli siis samassa hakemistossa missä on `.git/`-hakemisto, sijaitseva git-projektin konfiguraatiotiedosto.
+
+Githubin [github / gitignore](https://github.com/github/gitignore) reposta löytyy useille eri kielille esimerkkejä, joista voi katsoa esimerkkejä. Parempia tapa on kuinkin ajaa aina ennen `git add` -komentoa komento `git status -u`.
+
+
+
+## ... jos kuitenkin laitat binääritiedostoja gittiin (💾)
+
+Joskus gitti osoittautuu ainoaksi sopivaksi tietyille tiedostoille, kuten dokumentaatioon tai testaamiseen liittyville tiedostoille. Tämä voi olla OK-ratkaisu, olettaen että tiedostot eivät ole useiden gigatavujen kokoisia vaan mieluummin kilo- tai megatavuluokassa. Mikäli teet näin, luo tiedosto `.gitattributes`. Kyseinen konfiguraatiotiedosto mahdollistaa, että voit määrittää käsin, mitkä projektin tiedostot ovat binääriä.
+
+```
+*.obj binary
+*.exe binary
+*.dat binary
+*.wav binary
+```
+
+Mikäli tiedostot ovat satojen megatavujen tai gigatavujen kokoisia, lisääthän mieluummin `README.md`-tiedostoon ohjeet, mistä ne voi ladata. Näppärä koodari voi jopa tehdä skriptitiedoston, joka lataa ne automaattisesti oikeaan lokaatioon esimerkiksi AWS S3:sta, Azure Blob Storagesta, CSC:n Allas-palvelusta tai vaikka OneDrive/Sharepointista.
+
+
+
+## Ymmärrä, älä muista (🧠)
+
+Ethän aja git-komentoja `hauki on kala hauki on kala`-metodilla ulkoa muistellen. Tässä dokumentaatio on avuksi. Gitin käyttö on hyvin dokumentoituna Githubin, Gitlabin
+
+1. Ymmärrä mitä komento oikeasti tekee. 
+2. Aja komentoja saadaksesi haluamasi output.
+
+
+
+## Tarkista muutokset ennen committia. (🔍)
+
+Ethän koskaan aja komentoja `git add .` ja `git commit -m "jotain"` tarkistamatta, mihin tiedostoihin olet koskenut ja millä tavalla. Jos kirjoitat koodia, testaa se lokaalisti. Graafinen käyttöliittymä voi olla tässä suuresti avuksi. Visual Studio Coden "Source Code"-näkymä on tässä näppärä. Myös `git status -u` komento toimii, kuten myös `git diff mun/muutettu/tiedosto.js`.
+
+
+
+## Kirjoita merkityksellisiä commit-viestejä (📖)
+
+Commit edustaa muutosta koodissa, dokumentaatiossa tai muussa projektisi sisällössä. Commitin viestin tulisi kuvastaa, mikä on muuttunut. 
+
+❌ `Added some code lol`
+
+✅ `Added Save As funtionality to editor`
+
+
+
+## Työskentele pienissä inkrementeissä (🔨)
+
+Jos sinulle tulee fiilis, että commit message on proosaa, joka sisältää `...after which I ...`, ja `..and also...`, ja `...including but not limited to...`, ja `...and as a final step I refactored all code`, niin todennäköisesti työskentelet aivan liian suurissa paloissa. Hyvä git game loop on seuraava:
+
+* Tee pieni muutos kerrallaan.
+* Testaa se.
+* Commit.
+* Push.
+* Repeat.
+
+
+
+## Fetch tai Pull (🔁)
+
+Jos et työskentele yksin projektin parissa, vaan joku muu tiimin jäsen voi lisätä/muokata saman branchin sisältöä, aja `git fetch` tai `git pull` usein. Mikäli git löytää konflikteja, eli sinä ja joku muu olette muokanneet samaa riviä koodista, ratko konflikti heti. **Kommunikoi** tiimijäsenen ja/tai tiimin vetäjän kanssa. Miettikää, kumman muutos on parempi muutos.
+
+Mikäli työskentelet yksin, aloita päivä `git pull`:lla ja lopeta `git push`:iin. Tämä on neuvottu [Gitlab: Sooloilihan ohje](soolokäyttäjä.md)-luvussa.
+
+
+
+## Don't panic (🧘)
+
+Jos saat virheilmoituksen tai git avaa jotakin sinulle vierasta, kuten `vim`-tekstieditorin, älä hätiköi ja copy-pastea jokaista StackOverFlow:sta löytämääsi koodirimpsua. Hengitä rauhassa, lue mahdolliset virheilmoitukset läpi huolella ja kysy tarpeen mukaan apua muilta.

@@ -1,3 +1,4 @@
 nav:
+  - "Yleistä": yleista.md
   - "Gitlab: Sooloilijan ohje": soolokäyttäjä.md
   - ...

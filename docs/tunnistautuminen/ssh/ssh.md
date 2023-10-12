@@ -89,7 +89,7 @@ Mikäli kirjoitat `yes` ja painat enteriä, niin kyseistä hostia varten lisät�
 
 
 
-## Usean SSH-avaimen käyttö
+## Usean SSH-avaimen käyttö (Advanced)
 
 Mikäli haluat luoda eri avaimet eri palveluja varten, tarvitset konfiguraatiotiedoston `~/.ssh/config`, jonka sisältö on esimerkiksi:
 

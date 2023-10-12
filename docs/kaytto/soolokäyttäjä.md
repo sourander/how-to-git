@@ -86,7 +86,7 @@ Already up to date
 #####################################
 
 # Varmista, että status näkee haluamasi muutokset 
-$ git status
+$ git status -u
 
 # Lisää kaikki äsken statuksen näyttämäsi muutokset stagingiin
 $ git add .
