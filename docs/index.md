@@ -12,4 +12,4 @@ Itse `git` on Linus Torvaldsin kehittämä versionhallintatyökalu: aiemmin main
 !!! tip
     Tämä sivusto hyödyntää Githubin palvelua nimeltään Github Pages, joka luo Github-projektille julkisesti saatavilla olevan dokumentaation.
 
-Tämän materiaalin syventävänä ja tukevana materiaalina kannattaa lukea muuta dokumentaatio ja/tai kirjallisuutta. Yksi äärimmäisen suositeltu lähde on [Ilmainen Pro Git PDF-kirja](https://git-scm.com/book/en/v2).
+Tämän materiaalin syventävänä ja tukevana materiaalina kannattaa lukea muuta dokumentaatio ja/tai kirjallisuutta. Yksi äärimmäisen suositeltu lähde on [Ilmainen Pro Git PDF-kirja](https://git-scm.com/book/en/v2). Joihinkin pattitilanteisiin löytyy näppäriä ratkaisuita myös [Oh Shit, Git?!?](https://ohshitgit.com/)-sivustolta.
