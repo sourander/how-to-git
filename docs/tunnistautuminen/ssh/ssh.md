@@ -21,6 +21,7 @@ Se, minne julkinen avain git-palvelussa lisätään, riippuu palvelusta. Lue pal
 * [Gitlab: Add an SSH key to your GitLab account](https://docs.gitlab.com/ee/user/ssh.html#add-an-ssh-key-to-your-gitlab-account)
 * [Github: Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?tool=webui)
 
+Alla ohjeet julkisen avaimen kopioimiseksi leikepöydälle. Käy liittämässä se valitsemasi palvelun portaalissa.
 
 ```sh
 # WINDOWS ONLY
@@ -91,18 +92,27 @@ Mikäli kirjoitat `yes` ja painat enteriä, niin kyseistä hostia varten lisät�
 
 ## Usean SSH-avaimen käyttö (Advanced)
 
-Mikäli haluat luoda eri avaimet eri palveluja varten, tarvitset konfiguraatiotiedoston `~/.ssh/config`, jonka sisältö on esimerkiksi:
+Mikäli käytät useita eri avaimia, sinun pitää kertoa ssh-clientille, mitä avainta käytetään mihinkin palveluun. Tämä onnistuu ssh-komennon parametrilla:
+
+```sh
+$ ssh -i ~/.ssh/id_keyfile user@host
+```
+
+Mikäli haluat luoda eri avaimet eri palveluja varten ilman yllä mainittua tusausta, tarvitset konfiguraatiotiedoston `~/.ssh/config`, jonka sisältö on esimerkiksi:
 
 ```sh
 Host github.com
   IdentityFile ~/.ssh/github
+  IdentitiesOnly yes
 Host example.com
   IdentityFile ~/.ssh/example
+  IdentitiesOnly yes
 Host short_alias
   HostName some.very.long.aws.instance.name.amazonaws.com/
   User ec2-user
   Port 22
   IdentityFile ~/.ssh/something
+  IdentitiesOnly yes
 ```
 
 Huomaathan, että useimmissa tilanteissa yhden avainparin pitäisi riittää per tietokone. Mikäli kuitenkin haluat käyttää yhtä avainta kaikilla käyttämilläsi tietokoneilla, sinun pitää keksiä jokin tietoturvallinen tapa siirtää yksityinen avain tietokoneelta toiselta. Tässä voi auttaa salasananhallintapalvelu kuten Lastpass. Yleisesti helpointa on kuitenkin luoda jokaiselle käyttämällesi tietokoneelle (ja virtuaalikoneelle) yksi avainpari, ja levittää tämän avainparin julkinen avain kaikkiin käyttämiisi palveluihin (Kamit Gitlab, Gitlab Cloud, DC Labran Gitlab, Github, Puhti supertietokone, eri palvelimet ja niin edelleen...)

@@ -19,13 +19,13 @@ plugins=(git ssh-agent)
 # Tell ssh-agent plugin to use Keychain.
 zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
 
-# Yllä olevien komentojen pitäisi olla tiedostossa ENNEN seuravaanlaista riviä:
+# Yllä olevien rivien pitäisi olla tiedostossa ENNEN seuravaanlaista riviä:
 # source $ZSH/oh-my-zsh.sh
 ```
 
-Tämän jälkeen voit lisätä avaimen macOS:n keychainiin:
+Tämän jälkeen voit lisätä avaimen passphrasen macOS:n keychainiin:
 ```bash
 $ ssh-add --apple-use-keychain ~/.ssh/id_ed25519
-Enter passphrase for /Users/username/.ssh/id_ed25519:
-Identity added: /Users/username/.ssh/id_ed25519 (etunimisukunimi@kamk.fi macbook)
+  Enter passphrase for /Users/username/.ssh/id_ed25519: *******
+  Identity added: /Users/username/.ssh/id_ed25519 (etunimisukunimi@kamk.fi macbook)
 ```
