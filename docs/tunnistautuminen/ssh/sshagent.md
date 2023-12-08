@@ -10,6 +10,8 @@ Valitettavasti `ssh-agent` ei käynnisty automaattisesti Git Bash:n yhteydessä.
 
 Mikäli olet macOS-käyttäjä, sinulla ei ole Git Bashiä vaan todennäköisimmin Z Shell eli lyhyemmin `zsh`. Tällöin yksi tapa ratkaista ongelma on asentaa `Oh My Zsh`-niminen framework shell-konfiguraation hallintaan. Sen asentaa yhdellä komennolla, joka löytyy [Oh My Zsh -sivustolta](https://ohmyz.sh/).
 
+Tämän jälkeen lisää seuraavat rivit `.zshrc`-tiedostoon:
+
 ```bash
 # Choose Oh My Zsh plugins
 plugins=(git ssh-agent)
