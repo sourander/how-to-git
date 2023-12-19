@@ -66,6 +66,16 @@ git is /opt/homebrew/bin/git
 $ rehash
 ```
 
+## Git Credential Manager Core
+
+Git Credential Manager Core on ohjelma, joka auttaa sinua kirjautumaan git-palveluihin. Se on erityisen hyödyllinen, mikäli käytät ssh-avainta, joka on suojattu passphrase:lla, tai haluat kirjautua esimerkiksi GitHubiin HTTPS:n avulla.
+
+```bash
+brew tap microsoft/git 
+brew cask install git-credential-manager-core
+```
+
+
 ## Valinnainen: Asenna Oh My Zsh
 
 Mikäli haluat käyttää ssh-agenttia, helpoin tapa siihen Z Shellin kanssa on [Oh My Zsh](https://ohmyz.sh/), joka on Zsh:n konfiguraatioden hallintaa varten luotu framework.

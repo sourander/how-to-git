@@ -1,5 +1,5 @@
 nav:
     - Yleistä: yleistä.md
-    - SSH: ssh.md
+    - Avaimen luonti: ssh.md
     - Agentti: sshagent.md
     - ...

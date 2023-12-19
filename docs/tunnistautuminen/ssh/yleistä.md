@@ -1,23 +1,31 @@
 
-Symmetrisessä salauksessa sekä viestin salaajalla että purkajalla on **sama avain**. Asymmetrisessä salaukseen salaaja käyttää purjalta saatua **julkista** avainta, mutta salauksen voi purkaa ainoastaan purkajan hallussa olevalla yksityisellä avaimella, joka on **eri avain**.
+SSH-avaimia käyttäessä on hyvä ymmärtää, mitä salausavaimilla salaaminen oikeastaan tarkoittaa. ==Symmetrisessä== salauksessa sekä viestin salaajalla että purkajalla on **sama avain**. ==Asymmetrisessä salaukseen== salaaja käyttää purjalta saatua **julkista** avainta, mutta salauksen voi purkaa ainoastaan purkajan hallussa olevalla yksityisellä avaimella, joka on **eri avain**.
+
+Myöhemmin luot `ssh-keygen`-komennolla oman asymmetrisen avainparin. Lue kuitenkin alta, mitä julkinen ja yksityinen avain oikeastaan ovat.
 
 ## Asymmetrinen salaus lyhyesti
 
-Aloitetaan selittäminen kuitenkin symmetrisesta avaimesta, koska se on yksinkertaisempi. Kirjeen lähettämnen numerolukollisessa salkussa on reaalimaailman analogia symmetriseen salaukseen. 
+Aloitetaan symmetrisesta avaimesta, koska se on yksinkertaisempi. Kirjeen lähettäminen numerolukollisessa salkussa on reaalimaailman analogia symmetriseen salaukseen.
 
-Työnkulku voi mennä esimerkiksi näin: lähettäjä asettaa kirjeen salkkuun, kääntää numerolukon asentoon `1234` ja painaa `LOCK`-näppäintä. Jatkossa lukon saa auki kääntämällä numerot samaan asentoon, eli `1234`, ja painamalla `UNLOCK`-näppäintä. Lähettäjä antaa laukun kuriirille. Kuinka lähettäjä ja vastaanottaja osaavat käyttää samaa numeroa? Tämä pitää sopia toista keskustelukanavaa, kuten tekstiviestiä, käyttäen. Mikäli joku ulkopuolinen, kuten kuriiri, kaappaa tekstiviestin, heillä ei ole mitään ongelmia avata laukkua ja lukea kirjeen sisältöä. Vaiheet näkyvät Kuviossa 1. Kuvassa punaiset tekstit ja nuolet edustavat arkaluonteista tietoa, oranssi julkista tietoa.
+![Number lock](../../images/dalle_number_lock.jpg)
+
+**Kuvio 1:** *DALL-E 3:n näkemys numerolukollisesta salkusta postiauton kyydissä.*
+
+Työnkulku (ks. Kuvio 2) voi mennä esimerkiksi näin: lähettäjä asettaa kirjeen salkkuun, kääntää numerolukon asentoon `1234` ja painaa `LOCK`-näppäintä. Jatkossa lukon saa auki kääntämällä numerot samaan asentoon, eli `1234`, ja painamalla `UNLOCK`-näppäintä. Lähettäjä antaa laukun kuriirille. Kuinka lähettäjä ja vastaanottaja osaavat käyttää samaa numeroa? Tämä pitää sopia toista keskustelukanavaa, kuten tekstiviestiä, käyttäen. Mikäli joku ulkopuolinen, kuten kuriiri, kaappaa tekstiviestin, ulkopuolisella ei ole mitään ongelmia avata laukkua ja lukea kirjeen sisältöä.
 
 ![symmetrinen-salaus](../../images/symmetrinen-salaus.svg)
 
-**Kuvio 1**: *Symmetrinen salaus selitettynä salkun numerolukon avulla.*
+**Kuvio 2**: *Symmetrinen salaus selitettynä salkun numerolukon avulla. Punainen teksti edustaa salaista tietoa, keltainen julkisesti saatavilla olevaa tietoa.*
 
-Asymmetrinen salaus toimii reaalimaailmassa hieman heikommin, mutta käytetään kuvitteellista lukkoa apuna. Kuvitellaan salkku, jossa on asymmetrinen numerolukko brändiltään `amazing-o-lock`. Numerolukossa on kaksi erillistä avainkenttää: 4-numeroinen lukitusavain ja 6-numeroinen purkuavain. Jokaista 4-numeroista lukitusavainta vastaa yksi 6-numeroinen purkuavain: nämä valitaan purkualgoritmia käyttäen. Lähettäjä asettaa kirjeen salkkuun, kääntää numerolukon asentoon `1234` ja painaa `LOCK`-näppäintä. Jatkossa lukkoa **ei saa auki** samalla `1234`-numerosarjalla. Lähettäjä ei saa laatikkoa omine tietoineen enää auki. Lähettäjä antaa laukun kuriirille. Kuinka lähettäjä tietää käyttää oikeaa numeroa? Helposti. Vastaanottaja voi kailottaa oman julkisen avaimensa julkisesti koko maailmalle. Se voisi löytyä vastaanottajan nettisivuilta, käyntikortista, t-paidasta ja puhelinluettelosta. Sen sijaan **salaista avainta vastaanottaja ei luovuta kenellekään ulkopuoliselle**. Tämä on kuvattuna Kuviossa 2. Värien tarkoitukset ovat samat kuin Kuviossa 1.
+Asymmetrinen salaus toimii reaalimaailmassa hieman heikommin, mutta käytetään kuvitteellista lukkoa apuna. Kuvitellaan salkku, jossa on asymmetrinen numerolukko brändiltään `amazing-o-lock`. Numerolukossa on kaksi erillistä avainkenttää: 4-numeroinen lukitusavain ja 6-numeroinen purkuavain. Jokaista 4-numeroista lukitusavainta vastaa yksi 6-numeroinen purkuavain. Lähettäjä asettaa kirjeen salkkuun, kääntää numerolukon asentoon `1234` ja painaa `LOCK`-näppäintä. Jatkossa lukkoa **ei saa auki** samalla `1234`-numerosarjalla. Lähettäjä ei saa laatikkoa omine tietoineen enää auki. Lähettäjä antaa laukun kuriirille. Kuinka lähettäjä tietää käyttää oikeaa numeroa? Helposti. Vastaanottaja voi kailottaa oman julkisen avaimensa julkisesti koko maailmalle. Se voisi löytyä vastaanottajan nettisivuilta, käyntikortista, t-paidasta ja puhelinluettelosta. Sen sijaan **salaista avainta vastaanottaja ei luovuta kenellekään ulkopuoliselle**.
 
 ![](../../images/asymmetrinen-salaus.svg)
 
-**Kuvio 2**: *Asymmetrinen salaus selitettynä salkun numerolukon avulla.*
+**Kuvio 3**: *Asymmetrinen salaus selitettynä salkun numerolukon avulla. Punainen teksti edustaa salaista tietoa, keltainen julkisesti saatavilla olevaa tietoa.*
 
-Yllä olevissa esimerkeissä numerolukossa eli kombinaatiolukossa oli vain `4` (tai `4+6`) digittiä valittavana, joten kombinaatioita löytyisi `4 potensssiin 10` eli `1,048,576` kappaletta. Todellisuudessa salauksessa käytettävät avaimet ovat merkittävästi monimutkaisempia. Tämän hetken parhaan käytännön eli Ed25519-salausalgoritmin arvojen avaruus on suunnilleen `57,896,044,618,658,097,711,785,492,504,343,953,926,634,992,332,820,282,019,728,792,003,956,564,819,949`.
+!!! info
+
+    Yllä olevissa esimerkeissä numerolukossa eli kombinaatiolukossa oli vain `4` (tai `4+6`) digittiä valittavana, joten kombinaatioita löytyisi `4 potensssiin 10` eli `1,048,576` kappaletta. Todellisuudessa salauksessa käytettävät avaimet ovat merkittävästi monimutkaisempia. Tämän hetken parhaan käytännön eli Ed25519-salausalgoritmin arvojen avaruus on suunnilleen `57,896,044,618,658,097,711,785,492,504,343,953,926,634,992,332,820,282,019,728,792,003,956,564,819,949`.
 
 
 

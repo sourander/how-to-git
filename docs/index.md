@@ -5,6 +5,10 @@
 
 Tämä dokumentaatio sisältää ohjeistukset siihen, kuinka käyttää Gittiä opiskelijana. Kurssin esimerkit perustuvat pitkälti Kamitin ylläpitämään Gitlabiin, mutta samat ohjeet on sovellettavissa Githubiin, Gitlab Cloudiin, muissa organisaatioissa hostattuihin on-prem Gitlab-asennuksiin, Azure DevOpsiin ja niin edelleen. Dokumentaatio on suunniteltu luettavaksi järjestyksessä alusta loppuun: avaa vasemmalla näkyvää navigaatiota ja klikkaa linkit läpi järjestyksessä.
 
+![Git versionhallinta](images/dalle_git_terracotta.jpg)
+
+**Kuvio 1:** *DALL-E 3:n näkemys versionhallinnasta.*
+
 ## Mikä on git?
 
 Itse `git` on Linus Torvaldsin kehittämä versionhallintatyökalu: aiemmin mainitut yritykset tuottavat "git hosting serviceä". Niissä kaikissa toimii siis sama `git` konepellin alla, mutta kukin niistä tarjoaa muita palveluita sen päällä. Ihan vähimmillään ne tarjoavat tunnistautumisen ja jonkin sortin online-portaalin, mutta palveluihin kuuluu myös muun muassa vuokrattavaa pilvirautaa, jolla voi suorittaa koodin testausta. 
