@@ -25,9 +25,7 @@ Asymmetrinen salaus toimii reaalimaailmassa hieman heikommin, mutta käytetään
 
 !!! info
 
-    Yllä olevissa esimerkeissä numerolukossa eli kombinaatiolukossa oli vain `4` (tai `4+6`) digittiä valittavana, joten kombinaatioita löytyisi `4 potensssiin 10` eli `1,048,576` kappaletta. Todellisuudessa salauksessa käytettävät avaimet ovat merkittävästi monimutkaisempia. Tämän hetken parhaan käytännön eli Ed25519-salausalgoritmin arvojen avaruus on suunnilleen `57,896,044,618,658,097,711,785,492,504,343,953,926,634,992,332,820,282,019,728,792,003,956,564,819,949`.
-
-
+    Yllä olevissa esimerkeissä numerolukossa eli kombinaatiolukossa oli vain `4` digittiä valittavana, joten kombinaatioita löytyisi `10 potensssiin 4` eli `10,000` kappaletta. Todellisuudessa salauksessa käytettävät avaimet ovat merkittävästi monimutkaisempia. Tämän hetken parhaan käytännön eli Ed25519-salausalgoritmin arvojen avaruus on suunnilleen `57,896,044,618,658,097,711,785,492,504,343,953,926,634,992,332,820,282,019,728,792,003,956,564,819,949`.
 
 ## Kuinka monta avainta tarvitaan?
 
