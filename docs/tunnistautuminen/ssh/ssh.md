@@ -1,3 +1,5 @@
+## Luo avain
+
 Aloitetaan luomalla SSH-avain. Alla oleva komento toimii sekä Git Bashissä että macOS:n terminaalissa (zsh):
 
 ```sh
@@ -11,96 +13,119 @@ Suositeltu kommentti on muotoa `etunimi.sukunimi@kamk.fi kotikone`. Tämä tarko
 * Julkinen avain: `id_ed25519.pub`
 * Yksityinen avain: `id_ed25519`
 
-Tiedostolle on kannattavaa antaa passphrase, jota ilman tiedosto on käyttökelvoton, varsinkin jos käytät yhteisessä käytössä olevaa tietokonetta. Tämä vaikeuttaa vääriin käsiin joutuneen avaimen käyttöä merkittävästi. Yllä oleva komento kysyy sitä; anna tai ole antamatta.
+!!! tip
+
+    Tiedostolle on kannattavaa antaa ==passphrase==, jota ilman tiedosto on käyttökelvoton, varsinkin jos käytät yhteisessä käytössä olevaa tietokonetta. Tämä vaikeuttaa vääriin käsiin joutuneen avaimen käyttöä merkittävästi. Yllä oleva komento kysyy sitä; anna tai ole antamatta.
 
 
 ## Lisää avain Git-palveluun
 
-Se, minne julkinen avain git-palvelussa lisätään, riippuu palvelusta. Lue palvelun omat ohjeet:
-
-* [Gitlab: Add an SSH key to your GitLab account](https://docs.gitlab.com/ee/user/ssh.html#add-an-ssh-key-to-your-gitlab-account)
-* [Github: Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?tool=webui)
+### Vaihe 1: Kopioi leikepöydälle
 
 Alla ohjeet julkisen avaimen kopioimiseksi leikepöydälle. Käy liittämässä se valitsemasi palvelun portaalissa.
 
-```sh
-# WINDOWS ONLY
-$ cat ~/.ssh/id_ed25519.pub | clip
+=== "Windows (Git Bash)"
 
-# macOS ONLY
-$ tr -d '\n' < ~/.ssh/id_ed25519.pub | pbcopy
+    ```sh
+    $ cat ~/.ssh/id_ed25519.pub | clip
+    ```
 
-# UBUNTU ONLY
-$ sudo apt install xclip
-$ xclip -sel clip < ~/.ssh/id_ed25519.pub
-```
+=== "macOS (Zsh)"
+    ```sh
+    $ tr -d '\n' < ~/.ssh/id_ed25519.pub | pbcopy
+    ```
 
+=== "Ubuntu (Bash)"
 
-## Testaa avain
+    ```sh
+    # Asenna ensin xclip jos ei löydy jo
+    $ sudo apt update && sudo apt install xclip -y
+    $ xclip -sel clip < ~/.ssh/id_ed25519.pub
+    ```
 
-Avainta käytetään jatkossa kaikkiin palveluihin kirjauduttuessa, mikäli se on ainut löytyvä ssh-avain. Avainta voi testata näin:
+### Vaihe 2: Lisää palveluun
 
-```sh
-# Kamit Repo
-$ ssh -T ssh://git@repo.kamit.fi:45065
+Se, minne julkinen avain git-palvelussa lisätään tarkalleen, riippuu palvelusta. Lue palvelun omat ohjeet. Näitä ovat [Gitlab: Add an SSH key to your GitLab account](https://docs.gitlab.com/ee/user/ssh.html#add-an-ssh-key-to-your-gitlab-account) sekä [Github: Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?tool=webui). Jos käytät jotakin muuta palvelua kuin Github tai GitLab, lue kyseisen palvelun ohjeet.
 
-# Github
-$ ssh -T git@github.com
-```
+!!! tip "TL;DR"
 
-Mikäli palvelu kysyy salasanaa (ei siis `passphrasea` vaan `password`:ia), ssh-avain ei ole syystä tai toisesta käytössä. Ajoithan aiemmin mainitut `eval` ja `ssh-add` komennot, mikäli olet kopioinut ssh-avaimen toiselta tietokoneelta? Kokeile sulkea ja avata Git Bash terminaali uusiksi.
+    Pikaohje GitLabiin on tässä: `Preferences` => `SSH Keys` => `Add new key` => ++ctrl+v++ kenttään `Key`.
 
-Tarkempaan vianselvitykseen voit ajaa yllä näkyvän ssh-komennon, mutta vaihda optioksi `-Tvvv`, jotta se tulostaa kaiken mahdollisen lokitukseen menevän rividatan. Lue se läpi huolella ja ala etsiä vikaa.
+### Vaihe 3: Testaa avain
 
+Kun olet lisännyt avaimen käyttämäsi palvelun portaaliin, on hyvä varmistaa, että voit tunnistautua palveluun `SSH`:lla. Avainta käytetään jatkossa kaikkiin palveluihin kirjauduttuessa, mikäli se on ainut löytyvä ssh-avain. Avainta voi testata `repo.kamit.fi`-palvelun osalta näin:
+
+=== "repo.kamit.fi"
+
+    ```sh
+    #         ┌─ Tässä pitää lukea SSH eikä HTTPS!!
+    #         │
+    #        ┌┴┐
+    $ ssh -T ssh://git@repo.kamit.fi:45065
+    ```
+
+=== "Github"
+    ```sh
+    $ ssh -T git@github.com
+    ```
+
+Mikäli palvelu kysyy salasanaa (ei siis `passphrasea` vaan `password`:ia), ssh-avain ei ole syystä tai toisesta käytössä. Peruuta kirjautuminen painamalla ++ctrl+c++. Kokeile sulkea ja avata Git Bash terminaali uusiksi. Mikäli tämäkään ei auta, aloita vianselvitys. Jos ei ratkea järjellisessä ajassa, ==pyydä apua== kanssaopiskelijoilta tai opettajalta.
+
+!!! note "Vianselvityksen aloitus"
+
+    Tarkempaan vianselvitykseen voit ajaa yllä näkyvän ssh-komennon, mutta vaihda optioksi `-Tvvv`, jotta se tulostaa kaiken mahdollisen lokitukseen menevän rividatan. Lue se läpi huolella ja ala etsiä vikaa.
 
 
 ## Käytä avainta
 
-Huomaathan, että URI:n on oltava jatkossa muotoa, joka alkaa `ssh://...`, kuten:
+Mikäli yllä olevat vaiheet 1, 2 ja 3 eli avaimen luominen, lisäys palveluun ja testaus toimivat, voit aloittaa kyseisen git-palvelun käytön. Kloonaa jokin projekti, johon sinulla on oikeudet. Älä turhaa yritä keksiä URL:ia tyhjästä. Kirjaudu Git-palveluusi sisälle, etsi repositorio, ja käytä `Clone`-näppäintä. Muista valita protokollaksi SSH.
 
 ```sh
-# Tee näin.
-$ git clone ssh://git@repo.kamit.fi:<port>/<user-or-group-name>/<repo-project-name>.git
-
-# Älä tee näin. Tämä yrittää tunnistautua Git Credential Manager Coren popupilla
-$ git clone https://repo.kamit.fi/janisou1/test.git
+$ git clone ssh://git@repo.kamit.fi:<port>/<namespace>/<project>.git
 ```
+
+!!! warning
+
+    Huomaathan, että URI:n on oltava jatkossa muotoa, joka alkaa `ssh://...` ! 
+    
+    Jos yrität kloonata `https`-alkuisella URL:lla, git pyrkii kirjautumaan sisään HTTPS:n eikä SSH:n avulla.
 
 Repo Kamit käyttää custom TCP-porttia, joten URL:n osatekijät ovat:
 
 ```txt
       user        host
      ┌─┴─┐┌────────┴──────────┐
-ssh://git@repo.kamit.fi:<port>/<user-or-group-name>/<repo-project-name>.git
-└─┬──┘                        └────────────────────┬──────────────────────┘
-scheme                                            path
+ssh://git@repo.kamit.fi:<port>/<namespace>/<project>.git
+└─┬──┘                        └──────────┬──────────────┘
+scheme                                  path
 ```
 
-Kun käytät avainta ensimmäisen kerran, ssh client pyytää sinua varmistamaan, että palvelimen fingerprint on oikein.
+??? note "Mikä on fingerprint?"
 
-```
-Cloning into 'test'...
-The authenticity of host '[repo.kamit.fi]:45065 ([212.116.36.9]:45065)' can't be established.
-ED25519 key fingerprint is SHA256:cL3YVM/KHB14av6S6YfY+ZnEH9tiaOhIQxfd3WUizNE.
-This key is not known by any other names
-Are you sure you want to continue connecting (yes/no/[fingerprint])?
-```
+    Kun käytät avainta ensimmäisen kerran, ssh client pyytää sinua varmistamaan, että palvelimen fingerprint on oikein.
 
-Mikäli kirjoitat `yes` ja painat enteriä, niin kyseistä hostia varten lisätään rivit tiedostoon `.ssh/known_hosts`. Mikäli poistat tuon tiedoston, varmistust tehdään seuraavan git-operaation kohdalla uusiksi.
+    ```
+    Cloning into 'test'...
+    The authenticity of host '[repo.kamit.fi]:45065 ([212.116.36.9]:45065)' can't be established.
+    ED25519 key fingerprint is SHA256:cL3YVM/KHB14av6S6YfY+ZnEH9tiaOhIQxfd3WUizNE.
+    This key is not known by any other names
+    Are you sure you want to continue connecting (yes/no/[fingerprint])?
+    ```
 
+    Mikäli kirjoitat `yes` ja painat enteriä, niin kyseistä hostia varten lisätään rivit tiedostoon `.ssh/known_hosts`. Mikäli poistat tuon tiedoston, varmistus tehdään seuraavan git-operaation kohdalla uusiksi.
 
 
 ## Usean SSH-avaimen käyttö (Advanced)
 
-Mikäli käytät useita eri avaimia, sinun pitää kertoa ssh-clientille, mitä avainta käytetään mihinkin palveluun. Tämä onnistuu ssh-komennon parametrilla:
+Mikäli käytät useita eri avaimia, sinun pitää kertoa ssh-clientille, mitä avainta käytetään mihinkin palveluun. Tämä onnistuu ==manuaalisesti== ssh-komennon parametrilla:
 
 ```sh
 $ ssh -i ~/.ssh/id_keyfile user@host
 ```
 
-Mikäli haluat luoda eri avaimet eri palveluja varten ilman yllä mainittua tusausta, tarvitset konfiguraatiotiedoston `~/.ssh/config`, jonka sisältö on esimerkiksi:
+Mikäli haluat luoda eri avaimet eri palveluja varten ja käyttää niitä ==automaattisesti==, tarvitset konfiguraatiotiedoston `~/.ssh/config`, jonka sisältö on esimerkiksi. Tiedoston luominen on tarkkaa käsipeliä ja saattaa riippua esimerkiksi käytetystä käyttöjärjestelmästä hieman. Mikäli sinulla ei ole tarvetta tälle, älä tee sitä.
 
-```sh
+```sh title="~/.ssh/config"
 Host github.com
   IdentityFile ~/.ssh/github
   IdentitiesOnly yes
@@ -114,5 +139,3 @@ Host short_alias
   IdentityFile ~/.ssh/something
   IdentitiesOnly yes
 ```
-
-Huomaathan, että useimmissa tilanteissa yhden avainparin pitäisi riittää per tietokone. Mikäli kuitenkin haluat käyttää yhtä avainta kaikilla käyttämilläsi tietokoneilla, sinun pitää keksiä jokin tietoturvallinen tapa siirtää yksityinen avain tietokoneelta toiselta. Tässä voi auttaa salasananhallintapalvelu kuten Lastpass. Yleisesti helpointa on kuitenkin luoda jokaiselle käyttämällesi tietokoneelle (ja virtuaalikoneelle) yksi avainpari, ja levittää tämän avainparin julkinen avain kaikkiin käyttämiisi palveluihin (Kamit Gitlab, Gitlab Cloud, DC Labran Gitlab, Github, Puhti supertietokone, eri palvelimet ja niin edelleen...)

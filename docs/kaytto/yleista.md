@@ -72,7 +72,7 @@ Jos sinulle tulee fiilis, että commit message on proosaa, joka sisältää `...
 
 Jos et työskentele yksin projektin parissa, vaan joku muu tiimin jäsen voi lisätä/muokata saman branchin sisältöä, aja `git fetch` tai `git pull` usein. Mikäli git löytää konflikteja, eli sinä ja joku muu olette muokanneet samaa riviä koodista, ratko konflikti heti. **Kommunikoi** tiimijäsenen ja/tai tiimin vetäjän kanssa. Miettikää, kumman muutos on parempi muutos.
 
-Mikäli työskentelet yksin, aloita päivä `git pull`:lla ja lopeta `git push`:iin. Tämä on neuvottu [Gitlab: Sooloilihan ohje](soolokäyttäjä.md)-luvussa.
+Mikäli työskentelet yksin, aloita päivä `git pull`:lla ja lopeta `git push`:iin. Tämä on neuvottu [Gitlab: Sooloilihan ohje](soolokayttaja.md)-luvussa.
 
 
 

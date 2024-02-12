@@ -17,7 +17,7 @@ Työnkulku (ks. Kuvio 2) voi mennä esimerkiksi näin: lähettäjä asettaa kirj
 
 **Kuvio 2**: *Symmetrinen salaus selitettynä salkun numerolukon avulla. Punainen teksti edustaa salaista tietoa, keltainen julkisesti saatavilla olevaa tietoa.*
 
-Asymmetrinen salaus toimii reaalimaailmassa hieman heikommin, mutta käytetään kuvitteellista lukkoa apuna. Kuvitellaan salkku, jossa on asymmetrinen numerolukko brändiltään `amazing-o-lock`. Numerolukossa on kaksi erillistä avainkenttää: 4-numeroinen lukitusavain ja 6-numeroinen purkuavain. Jokaista 4-numeroista lukitusavainta vastaa yksi 6-numeroinen purkuavain. Lähettäjä asettaa kirjeen salkkuun, kääntää numerolukon asentoon `1234` ja painaa `LOCK`-näppäintä. Jatkossa lukkoa **ei saa auki** samalla `1234`-numerosarjalla. Lähettäjä ei saa laatikkoa omine tietoineen enää auki. Lähettäjä antaa laukun kuriirille. Kuinka lähettäjä tietää käyttää oikeaa numeroa? Helposti. Vastaanottaja voi kailottaa oman julkisen avaimensa julkisesti koko maailmalle. Se voisi löytyä vastaanottajan nettisivuilta, käyntikortista, t-paidasta ja puhelinluettelosta. Sen sijaan **salaista avainta vastaanottaja ei luovuta kenellekään ulkopuoliselle**.
+Asymmetrinen salaus toimii analogiassa hieman heikosti, mutta käytetään kuvitteellista lukkoa apuna. Kuvitellaan salkku, jossa on asymmetrinen numerolukko brändiltään `amazing-o-lock`. Numerolukossa on kaksi erillistä avainkenttää: ==4-numeroinen lukitusavain== ja ==6-numeroinen purkuavain==. Jokaista 4-numeroista lukitusavainta vastaa yksi 6-numeroinen purkuavain. Lähettäjä asettaa kirjeen salkkuun, kääntää numerolukon asentoon `1234` ja painaa `LOCK`-näppäintä. Jatkossa lukkoa **ei saa auki** samalla `1234`-numerosarjalla. Lähettäjä ei saa laatikkoa omine tietoineen enää auki. Lähettäjä antaa laukun kuriirille. Kuinka lähettäjä tietää käyttää oikeaa numeroa? Helposti. Vastaanottaja voi kailottaa oman julkisen avaimensa julkisesti koko maailmalle. Se voisi löytyä vastaanottajan nettisivuilta, käyntikortista, t-paidasta ja puhelinluettelosta. Sen sijaan **salaista avainta vastaanottaja ei luovuta kenellekään ulkopuoliselle**.
 
 ![](../../images/asymmetrinen-salaus.svg)
 
@@ -33,22 +33,27 @@ Käyttäjä voi päättää luoda useat eri avainparin tai käyttää yhtä avai
 
 Tietokoneiden kanssa ssh-avaimia voi luoda esimerkiksi yhden per käyttäjä, tai yhden per käyttäjän sähköposti, tai yhden per käyttäjän tietokone. Julkiselle avaimelle annetaan yleisesti kommentti, joten käytetään tämän kommenttikentän mahdollista arvoa selittämään eri vaihtoehdot. Näitä vaihtoehtoja ovat muiden muassa seuraavat:
 
-* Yksi avain per henkilö:
-    * Kommentti: `minä`
-    * Käytät tätä yhtä avainta kotona ja koulussa aivan joka koneella. Kopioit sitä paikasta toiseen jollakin turvallisella tavalla.
-* Yksi avain per sähköposti:
-    * Kommentti: `nimi@kamk.fi`
-    * ... tai kommentti: `nimi@example.com`.
-    * Käytät yhtä avainta koulun koneilla, toista kotikoneilla.
-* Yksi avain per git-palvelu:
-    * Kommentti: `minä gitlab-dclab`
-    * ...tai kommentti `minä gitlab-kamit`
-    * Käytät eri avainta per eri GitLab palvelu. Kopioit avaimia paikasta toiseen jollakin turvallisella tavalla.
-* Yksi avain per tietokone:
+!!! tip "Suositeltu tapa: Yksi avain per tietokone"
+
     * Kommentti: `nimi@kamk.fi laptop`
     * ... tai kommentti `nimi@kamk.fi TAxxLxx`
     * Luot joka tietokoneelle oman ssh-avainparin ja lisäät julkisen avaimen jokaiseen paikkaan, mihin haluat sillä koneella autentikoitua.
 
-Ensimmäinen vaihtoehto on vähiten turvallinen, mutta käytännöllisin. Vähiten turvallisella tarkoitetaan sitä, että **mikäli avain vuotaa, sillä pääsee kaikkialle minne sinäkin pääset**. Avain voi vuotaa esimerkiksi siten, että joku Linuxin super user käyttöoikeuksin varustettu opiskelija lukee sinun `.ssh/` kansion sisällön. Mikäli samalla avaimella voi kirjautua jollekin palvelimelle, joka sisältää sinulle arkaluonteista tietoa, se saattaa joutua vääriin käsiin. Viimeinen vaihtoehto on turvallisin, mutta aiheuttaa hitusen enemmän työtä, mikäli käytät suurta määrää eri tietokoneita. Huomaathan, että aina voi keksiä turvallisemman kombon, kuten `yksi avain per tietokone per sähköposti per git-palvelu per kuukausi`.
 
-Saat itse päättää oman turvallisuustasosi, mutta suositus on käyttää **yhtä avainta per tietokone**. Tällöin muoto on `etunimisukunimi@kamk.fi tietokone`. Syy tälle on se, että uuden tietokoneen käyttöönotto on jatkossa todella helppoa: luo avain ja lisää se käyttämääsi git-palveluun.
+??? warning "Vaihtoehtoinen tapa: Yksi avain per ihminen"
+
+    * Kommentti: `nimi@kamk.fi`
+    * Käytät tätä yhtä avainta kotona ja koulussa aivan joka koneella. Kopioit sitä paikasta toiseen jollakin turvallisella tavalla.
+    * Työläs kopioida ja pitää salassa.
+
+??? warning "Vaihtoehtoinen tapa: Yksi avain per palvelu"
+
+    * Kommentit: 
+        * `minä gitlab-dclab`
+        * `minä gitlab-kamit`
+    * Käytät eri avainta per eri GitLab palvelu. Kopioit avaimia paikasta toiseen jollakin turvallisella tavalla.
+    * Työläs kopioida ja pitää salassa.
+    * ...mutta joskus pakollinen! Ehkä palvelu A vaatii ed_id25519 algoritmia ja toinen vaatii 2048-bittistä RSA-avainta.
+
+
+Saat itse päättää oman turvallisuustasosi, mutta suositus on käyttää **yhtä avainta per tietokone**. Tällöin muoto on `etunimisukunimi@kamk.fi tietokone`. Syy tälle on se, että uuden tietokoneen käyttöönotto on jatkossa todella helppoa: luo avain ja lisää se käyttämääsi git-palveluun. Voi olla, että joudut poikkeamaan tästä vielä joskus. Esimerkiksi Azure VM ja CSC:n portaali eivät välttämättä tue GitLabin suosittelemaa ed_25519 algoritmia.
