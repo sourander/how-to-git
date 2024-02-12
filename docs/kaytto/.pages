@@ -1,4 +1,5 @@
 nav:
   - "Yleistä": yleista.md
   - "Gitlab: Sooloilijan ohje": soolokayttaja.md
+  - "Gitlab: Ryhmäkäytön ohje": ryhmakayttaja.md
   - ...
