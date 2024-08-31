@@ -1,5 +1,9 @@
 ## Luo avain
 
+!!! warning
+
+    Ennen kuin aloitat ohjeen seuraamisen, varmista, onko sinulla jo avain olemassa `~/.ssh/` hakemistossa. Jos sinulla on jo avain, älä luo uutta, vaan käytä sitä. Jos et tiedä, onko sinulla avainta, voit tarkistaa sen komennolla `ls ~/.ssh/`. Jos tiedostoja tai koko hakemistoa ei ole, voit jatkaa ohjeen seuraamista. Muutoin hyppää kohtaan [Lisää avain Git-palveluun](#lisaa-avain-git-palveluun).
+
 Aloitetaan luomalla SSH-avain. Alla oleva komento toimii sekä Git Bashissä että macOS:n terminaalissa (zsh):
 
 ```sh
