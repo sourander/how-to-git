@@ -2,6 +2,10 @@
 
 Tässä dokumentissa esitellään hyvin tiivis lista yleisimmistä git-komennoista. Kattavamman, mutta silti yhä helppolukuisen listan, löydät PDF-muodossa [Github: Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf).
 
+Git-komentojen opiskeluun voit hyödyntää myös valmiita roadmappeja, kuten [Roadmap.sh: Learn Git and Github](https://roadmap.sh/git-github). KAMK-ympäristössä voit korvata Github-moduulit Gitlab:n vastaavilla opeilla; samoilla hakusanoilla löytyy Gitlabin dokumentaatiota.
+
+Alussa kannattaa kuitenkin keskittyä peruskäyttöön. Tässä on listattu yleisimmät komennot, joita tarvitset päivittäisessä työskentelyssä jo opintojen alkuvaiheessa.
+
 ### Aloitus
 
 Tyypillisesti aloitat työskentelyn valitsemalla näistä toisen:
@@ -39,3 +43,14 @@ Yksinkertaisempaa on aloittaa Gitlabissa uusi projekti ja kloonata se lokaalisti
 * `git pull --no-ff`: Ohittaa `pull.ff=only`-asetuksen eli pakottaa mergen. Git lisää konfliktoiviin tiedostoihin rivejä, jotka osoittavat, mitä on muuttunut ja missä. Ratkaise konfliktit, lisää tiedostot stagingille, commitoi ja puske remoteen. Katso ohje [Käyttö/Gitlab: Ryhmäkäytönohje](kaytto/ryhmakayttaja.md)-luvusta.
 
 Huomaa, että `git pull` on yhdistelmä komennoista `git fetch` ja `git merge`. `git fetch` hakee muutokset remote-repositoriosta ja `git merge` yhdistää ne lokaaleihin muutoksiin.
+
+### Branch
+
+Pienten sooloprojektien kanssa pärjäät pelkällä `main` branchilla. Kun tekijöitä on enemmän, branchit auttavat eri osa-alueiden erottamisessa ja yhdistämisessä.
+
+* `git branch -v`: Näyttää branchit ja kertoo, missä branchissa olet.
+* `git switch <branchname>`: Vaihtaa branchia.
+
+!!! tip
+
+    Voit luoda branchit Gitlabin web-käyttöliittymässä. Tällöin saat ne helposti kytkettyä Issueen, jonka ne ratkaisevat. Tähän löytyy video-ohje [Käyttö/Gitlab: Ryhmäkäytönohje](kaytto/ryhmakayttaja.md)-luvusta. 
