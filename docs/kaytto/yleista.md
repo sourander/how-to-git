@@ -33,10 +33,7 @@ Mikäli tiedostot ovat satojen megatavujen tai gigatavujen kokoisia, lisääthä
 
 ## Ymmärrä, älä muista (🧠)
 
-Ethän aja git-komentoja `hauki on kala hauki on kala`-metodilla ulkoa muistellen. Tässä dokumentaatio on avuksi. Gitin käyttö on hyvin dokumentoituna Githubin, Gitlabin
-
-1. Ymmärrä mitä komento oikeasti tekee. 
-2. Aja komentoja saadaksesi haluamasi output.
+Ethän aja git-komentoja `hauki on kala hauki on kala`-metodilla ulkoa muistellen. Tässä dokumentaatio on avuksi. Gitin käyttö on hyvin dokumentoituna Githubin, Gitlabin ja muiden palveluiden sivuilla. Käytä niitä hyväksesi; lue niitä ajatuksella.
 
 
 

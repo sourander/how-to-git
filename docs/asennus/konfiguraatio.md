@@ -88,7 +88,10 @@ Oletuksen voi vaihtaa seuraavalla komennolla:
 git config --global init.defaultBranch main
 ```
 
+#### Värit
 
+Värit auttavat muun muassa `git status` ja `git log` -komentojen tulostuksia lukemaan. Värit saa päälle seuraavalla komennolla:
 
-
-
+```bash
+git config --global color.ui auto
+```
