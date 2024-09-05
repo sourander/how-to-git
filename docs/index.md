@@ -30,7 +30,7 @@ Vaikka git ei ole pilvipohjainen palvelu, se voi toimia yhdessä sellaisten palv
 
 ## Git ei ole ainoa
 
-Git on vain yksi versionhallintatyökalu monien joukossa. On olemassa muitakin työkaluja, kuten Subversion, Mercurial ja Perforce. Git on kuitenkin noussut suosituimmaksi työkaluksi avoimen lähdekoodin projekteissa.
+Git on vain yksi versionhallintatyökalu monien joukossa. On olemassa muitakin työkaluja, kuten Subversion (SVN) ja Perforce. Git on kuitenkin noussut suosituimmaksi työkaluksi avoimen lähdekoodin projekteissa.
 
 ## Antaa enemmän kuin ottaa
 
