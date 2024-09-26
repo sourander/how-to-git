@@ -1,3 +1,7 @@
+!!! warning
+
+    Huomaa, että tämä on edistyneille käyttäjille. Mikäli et ole varma, tarvitsetko tätä, et tarvitse tätä. Jos olet luonut ja testannut SSH-avainparin, jatka esimerkiksi [Soolokäyttäjän ohjeeseen](../../kaytto/soolokayttaja.md)
+
 Ohjelman `ssh-agent` käyttö ei ole pakollista, mikäli luomasi avain on vakiokansiossa (`~/.ssh/`) ja vakionimellä (esim, `id_ed25519`), mutta agentin käyttö helpottaa siten, että sinun ei tarvitse syöttää passphrasea joka kerta kun haluat kirjautua palveluun. SSH-agentin avulla on siis mahdollista saavuttaa "best of both worlds", eli (1) passphrasella turvattu yksityinen avain, joka suojaa avainta mikäli se päätyy vääriin käsiin, ja (2) helppokäyttöinen ssh-avain, joka ei vaadi passphrasea jokaisen git fetch, git push ynnä muun operaation yhteydessä.
 
 Mikäli `ssh-agent` on oikein konfiguroitu, sinun pitäisi voida kirjoittaa `ssh-add -l`, ja komennon pitäisi palauttaa sinun avaimesi tiedot. Lisäksi ympäristömuuttujat `SSH_AUTH_SOCK` sekä `SSH_AGENT_PID` sisältävät arvoja. Ne voit tulostaa komennolla: `printenv | grep SSH` tai yksitellen komennoilla `echo $SSH_AGENT_PID` sekä `echo $SSH_AUTH_SOCK`.

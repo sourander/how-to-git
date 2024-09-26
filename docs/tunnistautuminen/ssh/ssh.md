@@ -79,31 +79,6 @@ Mikäli palvelu kysyy salasanaa (ei siis `passphrasea` vaan `password`:ia), ssh-
 
     Tarkempaan vianselvitykseen voit ajaa yllä näkyvän ssh-komennon, mutta vaihda optioksi `-Tvvv`, jotta se tulostaa kaiken mahdollisen lokitukseen menevän rividatan. Lue se läpi huolella ja ala etsiä vikaa.
 
-
-## Käytä avainta
-
-Mikäli yllä olevat vaiheet 1, 2 ja 3 eli avaimen luominen, lisäys palveluun ja testaus toimivat, voit aloittaa kyseisen git-palvelun käytön. Kloonaa jokin projekti, johon sinulla on oikeudet. Älä turhaa yritä keksiä URL:ia tyhjästä. Kirjaudu Git-palveluusi sisälle, etsi repositorio, ja käytä `Clone`-näppäintä. Muista valita protokollaksi SSH.
-
-```sh
-$ git clone ssh://git@repo.kamit.fi:<port>/<namespace>/<project>.git
-```
-
-!!! warning
-
-    Huomaathan, että URI:n on oltava jatkossa muotoa, joka alkaa `ssh://...` ! 
-    
-    Jos yrität kloonata `https`-alkuisella URL:lla, git pyrkii kirjautumaan sisään HTTPS:n eikä SSH:n avulla.
-
-Repo Kamit käyttää custom TCP-porttia, joten URL:n osatekijät ovat:
-
-```txt
-      user        host
-     ┌─┴─┐┌────────┴──────────┐
-ssh://git@repo.kamit.fi:<port>/<namespace>/<project>.git
-└─┬──┘                        └──────────┬──────────────┘
-scheme                                  path
-```
-
 ??? note "Mikä on fingerprint?"
 
     Kun käytät avainta ensimmäisen kerran, ssh client pyytää sinua varmistamaan, että palvelimen fingerprint on oikein.
@@ -118,28 +93,4 @@ scheme                                  path
 
     Mikäli kirjoitat `yes` ja painat enteriä, niin kyseistä hostia varten lisätään rivit tiedostoon `.ssh/known_hosts`. Mikäli poistat tuon tiedoston, varmistus tehdään seuraavan git-operaation kohdalla uusiksi.
 
-
-## Usean SSH-avaimen käyttö (Advanced)
-
-Mikäli käytät useita eri avaimia, sinun pitää kertoa ssh-clientille, mitä avainta käytetään mihinkin palveluun. Tämä onnistuu ==manuaalisesti== ssh-komennon parametrilla:
-
-```sh
-$ ssh -i ~/.ssh/id_keyfile user@host
-```
-
-Mikäli haluat luoda eri avaimet eri palveluja varten ja käyttää niitä ==automaattisesti==, tarvitset konfiguraatiotiedoston `~/.ssh/config`, jonka sisältö on esimerkiksi. Tiedoston luominen on tarkkaa käsipeliä ja saattaa riippua esimerkiksi käytetystä käyttöjärjestelmästä hieman. Mikäli sinulla ei ole tarvetta tälle, älä tee sitä.
-
-```sh title="~/.ssh/config"
-Host github.com
-  IdentityFile ~/.ssh/github
-  IdentitiesOnly yes
-Host example.com
-  IdentityFile ~/.ssh/example
-  IdentitiesOnly yes
-Host short_alias
-  HostName some.very.long.aws.instance.name.amazonaws.com/
-  User ec2-user
-  Port 22
-  IdentityFile ~/.ssh/something
-  IdentitiesOnly yes
-```
+Kun olet luonut ja testannut avaimen (`ssh -T <url>`-komennolla), voit alkaa käyttää gittiä kyseisen git servicen kanssa. Voit jatkaa esimerkiksi [Soolokäyttäjän ohjeeseen](../../kaytto/soolokayttaja.md).
