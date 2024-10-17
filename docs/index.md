@@ -23,7 +23,7 @@ Tämän materiaalin syventävänä ja tukevana materiaalina kannattaa lukea muut
 Näin *Web 2.0* -aikakaudella on hyvä korostaa, että: 
 
 * ==git ei ole suuryhtiön online-palvelu==, kuten vaikkapa OneDrive, Spotify tai Instagram. 
-* Git ei tarjoa suoraan tiedostojen varmuuskopiointia tai synkronointia useiden laitteiden välillä kuten OneDrive, Google Drive tai Dropbow. 
+* Git ei tarjoa suoraan tiedostojen varmuuskopiointia tai synkronointia useiden laitteiden välillä kuten OneDrive, Google Drive tai Dropbox. 
 * Git:iä ei lähtökohtaisesti käytetä selaimella.
 
 Vaikka git ei ole pilvipohjainen palvelu, se voi toimia yhdessä sellaisten palveluiden kanssa, kuten Github, Gitlab tai Bitbucket, jotka tarjoavat keskitettyjä säilytyspaikkoja gitiin perustuville projekteille. Näiden palveluiden kautta voidaan jakaa koodia, tehdä tiimityötä ja jopa integroida jatkuva testaus ja käyttöönotto. Huomaa, että konepellin alla toimii silti ihan tavallinen git. Esimerkiksi Gitlab:lla on heidän palveluissaan ajettu `git init`-komento (joskin `--bare` optionilla.)
