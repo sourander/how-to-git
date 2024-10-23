@@ -6,6 +6,10 @@ Tämä luku sisältää muutaman nyrkkisäännön gitin käytöstä, jotka on hy
 
 Tee `README.md` ja `LICENSE` ja lisäksi tarpeen mukaan jokin wiki/blogi/saitti/muu. Selitä, miksi projekti on olemassa, kuinka sen voi asentaa, kuinka sitä voi ajaa, mitä tekijänoikeuksia/lisenssejä siihen liittyy ja niin edelleen. Mikäli työskentelet jonkin uuden teknologian kanssa, on suositeltavaa luoda jopa `MEMO.md`, johon tallennat historian tekemisestä vaiheista. Tämä auttaa myöhemmässä käyttöönottovaiheessa tai vianselvityksessä merkittävästi.
 
+!!! tip
+
+    Mikset käyttäisi Github Pages -työkalua tehdäksesi itsellesi portfolio-tyylisen sivuston, jota voit käyttää esimerkiksi työnhaussa? Tämä sivu, jota luet nyt, on tehty Github Pagesilla. Koodi löytyy [gh:sourander/how-to-git](https://github.com/sourander/how-to-git) -repositoriosta. Sivusto päivittyy automaattisesti uuden pushin myötä (ks `.github/workflows/*.yml`).
+
 
 
 ## Älä laita suuria binääritiedostoja gittiin (💾)
@@ -33,13 +37,17 @@ Mikäli tiedostot ovat satojen megatavujen tai gigatavujen kokoisia, lisääthä
 
 ## Ymmärrä, älä muista (🧠)
 
-Ethän aja git-komentoja `hauki on kala hauki on kala`-metodilla ulkoa muistellen. Tässä dokumentaatio on avuksi. Gitin käyttö on hyvin dokumentoituna Githubin, Gitlabin ja muiden palveluiden sivuilla. Käytä niitä hyväksesi; lue niitä ajatuksella.
+Ethän aja git-komentoja `hauki on kala hauki on kala`-metodilla ulkoa muistellen, ymmärtämättä mitä ne tekevät. Gitin käyttö on hyvin dokumentoituna Githubin, Gitlabin ja muiden palveluiden sivuilla sekä ilmaisessa Pro Git -kirjassa. Käytä niitä hyväksesi; lue niitä ajatuksella. Kun ymmärrät, muistitaakka vähenee.
 
 
 
 ## Tarkista muutokset ennen committia. (🔍)
 
-Ethän koskaan aja komentoja `git add .` ja `git commit -m "jotain"` tarkistamatta, mihin tiedostoihin olet koskenut ja millä tavalla. Jos kirjoitat koodia, testaa se lokaalisti. Graafinen käyttöliittymä voi olla tässä suuresti avuksi. Visual Studio Coden "Source Code"-näkymä on tässä näppärä. Myös `git status -u` komento toimii, kuten myös `git diff mun/muutettu/tiedosto.js`.
+Ethän koskaan aja komentoja `git add .` ja `git commit -m "jotain"` tarkistamatta, mihin tiedostoihin olet koskenut ja millä tavalla. Aluksi on hyvä tapa käyttää lokaalia testausta ennen `git push`-komentoa. 
+
+!!! note
+
+    Myöhemmin opit käyttämään CI/CD-palveluita, jotka testaavat koodisi automaattisesti ennen kuin se päätyy muiden käyttöön - tästä ei kannata murehtia aloittelijena.
 
 
 
@@ -59,15 +67,14 @@ Jos sinulle tulee fiilis, että commit message on proosaa, joka sisältää `...
 
 * Tee pieni muutos kerrallaan.
 * Testaa se.
-* Commit.
-* Push.
+* Stage, Commit & Push.
 * Repeat.
 
 
 
 ## Fetch tai Pull (🔁)
 
-Jos et työskentele yksin projektin parissa, vaan joku muu tiimin jäsen voi lisätä/muokata saman branchin sisältöä, aja `git fetch` tai `git pull` usein. Mikäli git löytää konflikteja, eli sinä ja joku muu olette muokanneet samaa riviä koodista, ratko konflikti heti. **Kommunikoi** tiimijäsenen ja/tai tiimin vetäjän kanssa. Miettikää, kumman muutos on parempi muutos.
+Jos et työskentele yksin projektin parissa, vaan joku muu tiimin jäsen voi lisätä/muokata saman branchin sisältöä, hyödynnä mieluiten brancheja - tai aja git pull aina ennen pushia. Branchien käyttö on neuvottu [GitLab: Ryhmäkäytön ohje](ryhmakayttaja.md)-luvussa.
 
 Mikäli työskentelet yksin, aloita päivä `git pull`:lla ja lopeta `git push`:iin. Tämä on neuvottu [Gitlab: Sooloilihan ohje](soolokayttaja.md)-luvussa.
 
@@ -76,3 +83,7 @@ Mikäli työskentelet yksin, aloita päivä `git pull`:lla ja lopeta `git push`:
 ## Don't panic (🧘)
 
 Jos saat virheilmoituksen tai git avaa jotakin sinulle vierasta, kuten `vim`-tekstieditorin, älä hätiköi ja copy-pastea jokaista StackOverFlow:sta löytämääsi koodirimpsua. Hengitä rauhassa, lue mahdolliset virheilmoitukset läpi huolella ja kysy tarpeen mukaan apua muilta.
+
+!!! tip
+
+    Huomaa, että saat tarkempia virheilmoituksia `verbose`-flagilla. Esimerkiksi `git pull --verbose` tai `git push -v`.
