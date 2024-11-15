@@ -35,8 +35,9 @@ Alla ohjeet julkisen avaimen kopioimiseksi leikepöydälle. Käy liittämässä 
     ```
 
 === "macOS (Zsh)"
+
     ```sh
-    $ tr -d '\n' < ~/.ssh/id_ed25519.pub | pbcopy
+    $ cat ~/.ssh/id_ed25519.pub | pbcopy
     ```
 
 === "Ubuntu (Bash)"
