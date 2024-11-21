@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Jani Sourander <sourander@gmail.com>"]
 readme = "README.md"
+package-mode = false
 # We do not actually have a package, but if we did, you would add:
 # packages = [{include = "doc_skeleton"}]
 

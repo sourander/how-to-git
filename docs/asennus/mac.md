@@ -66,9 +66,39 @@ git is /opt/homebrew/bin/git
 $ rehash
 ```
 
-## Git Credential Manager Core
+## Valinnainen: Apple Keychain passphraseille
 
-Git Credential Manager Core on ohjelma, joka auttaa sinua kirjautumaan git-palveluihin. Se on erityisen hyödyllinen, mikäli käytät ssh-avainta, joka on suojattu passphrase:lla, tai haluat kirjautua esimerkiksi GitHubiin HTTPS:n avulla.
+Passphrasen täyttäminen joka git- tai sshs-komennon yhteydessä on ärsyttävää. Tähän löytyy ratkaisuna ssh-agent. MacOS:ssä on mahdollista käyttää Applen omaa Keychainiä säilönä näille avaimille.
+
+Nykyään vakio shelli macOS:ssä on Z Shell eli lyhyemmin `zsh` - tämä on siis Bashin korvaaja macOS:ssä. Helppo tapa ratkaista avaimien säilöminen Keychainiin on asentaa `Oh My Zsh`-niminen framework shell-konfiguraation hallintaan, ja pyytää sen pluginia hoitamaan koko homman.
+
+Asenna [Oh My Zsh](https://ohmyz.sh/) sen oman sivuston ohjeiden mukaan. Sinun tarvitsee ajaa vain yksi komento.
+
+Tämän jälkeen lisää seuraavat rivit `.zshrc`-tiedostoon:
+
+```bash
+# Choose Oh My Zsh plugins as whitespace list
+# Example:
+# plugins=(a-plugin another-plugin third-plugin)
+plugins=(ssh-agent)
+
+# Tell ssh-agent plugin to use Keychain.
+zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
+
+# Yllä olevien rivien pitäisi olla tiedostossa ENNEN seuravaanlaista riviä:
+# source $ZSH/oh-my-zsh.sh
+```
+
+Tämän jälkeen voit lisätä avaimen passphrasen macOS:n keychainiin:
+```bash
+$ ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+  Enter passphrase for /Users/username/.ssh/id_ed25519: *******
+  Identity added: /Users/username/.ssh/id_ed25519 (etunimisukunimi@kamk.fi macbook)
+```
+
+## Valinnainen: Git Credential Manager Core
+
+Git Credential Manager Core on ohjelma, joka auttaa sinua kirjautumaan git-palveluihin. Se on erityisen hyödyllinen, jos haluat kirjautua esimerkiksi GitHubiin HTTPS:n avulla.
 
 ```bash
 brew tap microsoft/git 
