@@ -58,7 +58,7 @@ Aloitetaan pohjustamalla hieman, miksi tässä on niin monta vaihetta. Kun asenn
     (and related) binaries but use them as found on PATH.
 ```
 
-En ole yllä neuvonut vaihtamaan tätä asetusta toiseksi, koska :one: en halua ensimmäistä kertaa gittiä käyttäville turhaa asetustyötä, ja koska :two: muut työkalut, kuten TortoiseGit, saattavat asentaa uusia `ssh.exe`-tiedostoja `PATH`:iin muutenkin. Näinpä sinun tulee osata itse varmistaa, että **git ja ssh komennot käyttävät 
+En ole yllä neuvonut vaihtamaan tätä asetusta toiseksi, koska :one: en halua ensimmäistä kertaa gittiä käyttäville turhaa asetustyötä, ja koska :two: muut työkalut, kuten TortoiseGit, saattavat asentaa uusia `ssh.exe`-tiedostoja `PATH`:iin muutenkin. Näinpä sinun tulee osata itse varmistaa, että git ja ssh komennot käyttävät juuri sitä binääriä, mitä sinä haluat niiden käyttävän. Ja tämähän ratkotaan tyypillisesti `PATH`-ympäristömuuttujalla, mutta toki asiaan voi vaikuttaa muutkin seikat, kuten `GIT_SSH`-ympäristömuuttuja tai Git global configit. Kurkataan vaiheittain, miten tämä tehdään. Aloitetaan kuitenkin tutustumalla siihen, mitä `where ssh`-komento kertoo ennen kuin teemme mitään muuta.
 
 ![Two competing ssh.exe files](../images/two-competing-ssh-binaries.png)
 
@@ -145,7 +145,7 @@ Mikäli ajat komennon useita kertoja, se kysyy passphrasea joka kerta. Miksi? Ko
 ssh-add ~/.ssh/id_ed25519
 ```
 
-Kun ajat yllä olevan, passphrase kysytään sinulta viimeisen kerran. Jatkossa voit ajaa `ssh -T ssh://git@repo.kamit.fi:45065` ja `ssh.exe` löytää avaimen salasanoineen agentin muistista. Jos käynnistät koneen uusiksi, komennon `ssh-add -L` pitäisi yhä listata sinun avaimesi ja passphrasen pitäisi yhä tulla suoraan agentilta. Käytännössä voisi nyt vaikka poistaa koko `~/.ssh/id_ed25519`-tiedoston, ja SSH toimisi yhä, koska avain ladataan agentilta.
+Kun ajat yllä olevan, passphrase kysytään sinulta viimeisen kerran. Jatkossa voit ajaa `ssh -T ssh://git@repo.kamit.fi:45065` ja `ssh.exe` löytää avaimen salasanoineen agentin muistista. Jos käynnistät koneen uusiksi, komennon `ssh-add -L` pitäisi yhä listata sinun avaimesi ja passphrasen pitäisi yhä tulla suoraan agentilta. Käytännössä voisit nyt vaikka poistaa koko `~/.ssh/id_ed25519`-tiedoston, ja SSH toimisi yhä, koska avain ladataan agentilta.
 
 ### Git
 
