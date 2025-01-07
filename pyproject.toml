@@ -11,9 +11,3 @@ name = "how-to-git"
 version = "0.1.0"
 description = ""
 readme = "README.md"
-
-[tool.pdm.build]
-includes = []
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
