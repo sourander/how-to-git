@@ -1,4 +1,6 @@
 {
-    "category": "Learning tools",
-    "related_repo": "[Workshop: How to Git](https://gitlab.dclabra.fi/workshopit/how-to-git)"
+  "site_name": "How to Git",
+  "site_name_slug": "how-to-git",
+  "category": "Learning tools",
+  "related_repo": "[Workshop: How to Git](https://gitlab.dclabra.fi/workshopit/how-to-git)"
 }
