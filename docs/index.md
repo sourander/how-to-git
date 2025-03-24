@@ -1,4 +1,4 @@
-# How to Git
+# Aloita tästä
 
 !!! warning
     For now, this repository contains only Finnish guides, but it may be translated into English in future.

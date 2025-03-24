@@ -1,3 +1,4 @@
+# Yleistä
 
 SSH-avaimia käyttäessä on hyvä ymmärtää, mitä salausavaimilla salaaminen oikeastaan tarkoittaa. ==Symmetrisessä== salauksessa sekä viestin salaajalla että purkajalla on **sama avain**. ==Asymmetrisessä salaukseen== salaaja käyttää purjalta saatua **julkista** avainta, mutta salauksen voi purkaa ainoastaan purkajan hallussa olevalla yksityisellä avaimella, joka on **eri avain**.
 

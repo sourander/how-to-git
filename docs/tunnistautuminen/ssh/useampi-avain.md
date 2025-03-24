@@ -1,4 +1,4 @@
-# Usean SSH-avaimen käyttö (Advanced)
+# Useampi avain (Advanced)
 
 !!! warning
 

@@ -1,3 +1,5 @@
+# Gitlab: Ryhmäkäytön ohje
+
 !!! warning
 
     Git:n opiskelu ottaa aikansa. On suositeltavaa pyörittää henkilökohtaisia repositorioita ensin. Kannattaa aloittaa soolokäyttäjän ohjeella esimerkiksi siten, että kirjoitat oppimispäiväkirjat Markdown-muodossa ja commitoit muutokset GitLabiin.

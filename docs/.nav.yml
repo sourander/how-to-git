@@ -1,7 +1,6 @@
 nav:
-  - Aloita tästä: index.md
+  - index.md
   - asennus
   - tunnistautuminen
   - "Käyttö": kaytto
-  - ...
   - cheat_sheet.md

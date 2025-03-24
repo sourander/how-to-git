@@ -1,3 +1,5 @@
+# Gitlab: Sooloilijan ohje
+
 Tämän ohjeen tarkoitus on opettaa pärjäämän tilanteessa, jossa sinä olet ainut repositorion käyttäjä. Ohjeesta puuttuvat tyystin git branchit, git pull requestit ja konfliktien ratkaisu.
 
 !!! warning

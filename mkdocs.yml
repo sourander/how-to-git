@@ -2,9 +2,12 @@ site_name: How to Git
 
 theme:
   name: material
+  language: fi
+  
   features:
     - content.code.copy     # add copy button to code blocks
     - content.code.annotate # add annotation support to code blocks
+    - content.tabs.link     # content tabs united!
   # Day and night mode
   palette:
     # Palette toggle for dark mode
@@ -56,10 +59,12 @@ markdown_extensions:
 
 plugins:
   # Navigation page ordering
-  - awesome-pages
+  - awesome-nav
   - search
 
-# TODO: Replace the copyright with correct. Also add LICENCE file. Template included.
+
+
+
 copyright: |
-  Copyright &copy; 2024 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu</a>. 
+  Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
   Licenced under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">BY-NC-ND 4.0</a>

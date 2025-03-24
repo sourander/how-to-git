@@ -1,6 +1,6 @@
+# Yleistä
+
 Tämä luku sisältää muutaman nyrkkisäännön gitin käytöstä, jotka on hyvä pitää mielessä.
-
-
 
 ## Dokumentoi kaikki mitä teet (✍️)
 
