@@ -18,7 +18,7 @@ Tämän materiaalin syventävänä ja tukevana materiaalina kannattaa lukea muut
 
 **Kuvio 1:** *DALL-E 3:n näkemys versionhallinnasta.*
 
-## Mikä git ei ole
+### Mikä git ei ole
 
 Näin *Web 2.0* -aikakaudella on hyvä korostaa, että: 
 
@@ -26,11 +26,20 @@ Näin *Web 2.0* -aikakaudella on hyvä korostaa, että:
 * Git ei tarjoa suoraan tiedostojen varmuuskopiointia tai synkronointia useiden laitteiden välillä kuten OneDrive, Google Drive tai Dropbox. 
 * Git:iä ei lähtökohtaisesti käytetä selaimella.
 
-Vaikka git ei ole pilvipohjainen palvelu, se voi toimia yhdessä sellaisten palveluiden kanssa, kuten Github, Gitlab tai Bitbucket, jotka tarjoavat keskitettyjä säilytyspaikkoja gitiin perustuville projekteille. Näiden palveluiden kautta voidaan jakaa koodia, tehdä tiimityötä ja jopa integroida jatkuva testaus ja käyttöönotto. Huomaa, että konepellin alla toimii silti ihan tavallinen git. Esimerkiksi Gitlab:lla on heidän palveluissaan ajettu `git init`-komento (joskin `--bare` optionilla.)
+Vaikka git ei ole pilvipohjainen palvelu, se voi toimia yhdessä sellaisten palveluiden kanssa, kuten Github, Gitlab tai Bitbucket, jotka tarjoavat keskitettyjä säilytyspaikkoja gitiin perustuville projekteille. Näiden palveluiden kautta voidaan jakaa koodia, tehdä tiimityötä ja jopa integroida jatkuva testaus ja käyttöönotto. Huomaa, että konepellin alla toimii silti ihan tavallinen git. Esimerkiksi Gitlab:lla on heidän palveluissaan ajettu `git init`-komento (joskin `--bare` optionilla), kun luot uuden projektirepon.
 
-## Git ei ole ainoa
+### Git ei ole ainoa
 
-Git on vain yksi versionhallintatyökalu monien joukossa. On olemassa muitakin työkaluja, kuten Subversion (SVN) ja Perforce. Git on kuitenkin noussut suosituimmaksi työkaluksi avoimen lähdekoodin projekteissa.
+Git on vain yksi versionhallintatyökalu monien joukossa. On olemassa muitakin työkaluja, kuten Apache Subversion (`svn`), Mercury (`hg`) ja kaupallinen, suljetun lähdekoodin Perforce P4, jota käyttävät eritoten pelinkehittäjät Unreal Enginen ja CRYENGINE:n kanssa. Git on kuitenkin noussut suosituimmaksi työkaluksi avoimen lähdekoodin projekteissa. Tuoreitakin haastajia löytyy, kuten Pijul.
+
+Git on tyyliltään **tilannekuva**-pohjainen (*engl. snapshot*) ja **hajautettu** (*engl. distributed*). Nämä kaksi ominaisuutta tarkoittavat, että:
+
+* Jokainen käyttäjä voi ladata koko projektin historian paikallisesti
+* Muutokset tallennetaan **snapshotteina** eli tilannekuvina, ei muutospaketteina (*engl. patch, changeset*)
+* Suorituskyvyn vaatimus on asiakkaan harteilla, ei palvelimen
+* Mahdollistaa offline-työn
+
+Näiden kahden ominaisuuden vastakohdat ovat `Distributed --> Client-Server` sekä `Snapshot --> Patch`. Sanasta *client-server* voi käyttää myös termiä *centralized*, eli keskitetty. Huomaa, että ei ole olemassa absoluuttisesti hyvää ja huonoa ominaisuutta, vaan kaiken mukana tulee jokin *trade-off*. Esimerkiksi Patch-pohjainen keskitetty versionhallinta olisi todennäköisesti helppokäyttöinen – mutta me käytämme gittiä, koska se on kentällä de facto -standardi.
 
 ## Antaa enemmän kuin ottaa
 
