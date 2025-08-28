@@ -33,6 +33,8 @@ Joskus gitti osoittautuu ainoaksi sopivaksi tietyille tiedostoille, kuten dokume
 
 Mikäli tiedostot ovat satojen megatavujen tai gigatavujen kokoisia, lisääthän mieluummin `README.md`-tiedostoon ohjeet, mistä ne voi ladata. Näppärä koodari voi jopa tehdä skriptitiedoston, joka lataa ne automaattisesti oikeaan lokaatioon esimerkiksi AWS S3:sta, Azure Blob Storagesta, CSC:n Allas-palvelusta tai vaikka OneDrive/Sharepointista.
 
+Suurten tiedostojen kanssa voit käyttää myös Git LFS:ää (Large File Storage), joka on suunniteltu erityisesti suurten tiedostojen hallintaan git-repositorioissa, ja meidän DC-labran GitLab tukee tätä ominaisuutta. Tähän löytyy helppo ohje GitLabin sivuilta: [Getting started with Git LFS](https://about.gitlab.com/blog/getting-started-with-git-lfs-tutorial/#local-machine) alkaen otsikosta "Local machine" ja loppuen otsikkoon "Track as early as possible".
+
 
 
 ## Ymmärrä, älä muista (🧠)
