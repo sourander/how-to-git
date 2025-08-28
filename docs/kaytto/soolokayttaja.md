@@ -1,13 +1,20 @@
 # Gitlab: Sooloilijan ohje
 
-Tämän ohjeen tarkoitus on opettaa pärjäämän tilanteessa, jossa sinä olet ainut repositorion käyttäjä. Ohjeesta puuttuvat tyystin git branchit, git pull requestit ja konfliktien ratkaisu.
+Tämän ohjeen tarkoitus on opettaa pärjäämän tilanteessa, jossa sinä olet ainut repositorion käyttäjä. Ohje on jaettu seuraaviin osiin, joten voit tutustua siihen osaan, mikä on sinulle nyt ajankohtainen:
+
+1. Jos sillä koneella, jonka äärellä nyt istut, ei ole vielä paikallista kopiota työstäsi, lue [Työn aloitus](#tyon-aloitus).
+2. Jos sinulla on jo paikallinen kopio työstäsi, voit siirtyä suoraan [Työn jatkaminen](#tyon-jatkaminen) -osioon.
 
 !!! warning
     Sinulla tulee olla ssh-avain tunnistautumista varten valmiina ja lisättynä GitLabiin. Lue tämän sivuston aiemmat luvut, jotta osaat tehdä avaimen ja testata sen toiminnan.
 
 Huomaa, että saatat aloittaa joko tyhjästä tai olemassa olevasta repositoriosta. Tämä ohje kattaa molemmat tilanteet. Klikkaa tarvittava admonition-ruutu alla auki.
 
-## Valmiin repositorion käyttö
+## Työn aloitus
+
+Tässä osiossa on kaksi aliotsikkoa: [Valmiin repositorion käyttö](#valmiin-repositorion-kaytto) ja [Tyhjän repositoryn käyttö](#tyhjan-repositoryn-kaytto). Valitse otsikko sen mukaan, onko sinulla jo olemassa oleva repositorio (kloonaus) vai aloitatko tyhjältä pohjalta (repositorion alustus).
+
+#### Valmiin repositorion käyttö
 
 ??? tip "Olemassa oleva repositorio"
 
@@ -44,13 +51,9 @@ Huomaa, että saatat aloittaa joko tyhjästä tai olemassa olevasta repositorios
     scheme                                  path
     ```
 
-## Tyhjän repositoryn käyttö
+### Tyhjän repositoryn käyttö
 
-??? tip "Tyhjä repositorio"
-
-    Joskus aloitat tyhjästä. Sinulla ei ole vielä laisinkaan repositoriota. Tällöin sinun tulee luoda uusi repositorio. Tämä onnistuu seuraavasti:
-
-    ### Repositoryn luominen
+??? tip "Jos opettaja ei ole antanut sinulle repositorion URL:ia"
 
     !!! warning
         Mikäli opettaja on antanut sinulle repositorion, jota kuuluu kurssilla käyttää, käytä sitä. Hyppää suoraan tämän ohjeen aliotsikkoon **"Tyhjän repositoryn täyttö"**. Muussa tapauksessa jatka ohjeen lukemista suoraan tämän rivin alta.
@@ -74,10 +77,9 @@ Huomaa, että saatat aloittaa joko tyhjästä tai olemassa olevasta repositorios
 
     Ethän turhaan luo README-tiedostoa. Käytä projektille lyhyttä ja kuvaavaa nimeä. Yllä oleva `My Project Name` on luonnollisesti vain esimerkki. Voit lisätä sen myöhemmin itse. Kun yllä olevat asetukset on laitettu.
 
+??? tip "Jos opettaja on antanut sinulle repositorion URL:n"
 
-    ### Tyhjän repositoryn täyttö
-
-    Kun olet luonut repositorion, selain ohjautuu sivulle, joka edustaa repositoryn http-näkymää. Sen osoite on muotoa `https://repo.kamit.fi/xxxxxxx/my-project-name`. Ruudullasi pitäisi näkyä alla olevan kuvan mukainen ohjeteksti. `xxxxxxx`:n tilalla lukee sinun GitLab-käyttäjätunnus.
+    Kun opettaja (tai sinä itse) on luonut tyhjän repositorion, selain ohjautuu sivulle, joka edustaa repositoryn http-näkymää. Sen osoite on muotoa `https://repo.kamit.fi/xxxxxxx/my-project-name`. Ruudullasi pitäisi näkyä alla olevan kuvan mukainen ohjeteksti. `xxxxxxx`:n tilalla lukee sinun GitLab-käyttäjätunnus.
 
     ![gitlab-empty-repo-guide](../images/gitlab-empty-repo-guide.png)
 
@@ -108,37 +110,37 @@ Huomaa, että saatat aloittaa joko tyhjästä tai olemassa olevasta repositorios
 
 Kun olet joko kloonannut olemassa olevan repositorion tai luonut uuden, voit jatkaa alla olevan ohjeen seuraamista. Jatkossa sinua auttaa Amazing Game Loop, jota ==orjallisesti noudattaen== vältät konfliktit ja muut ongelmat.
 
-## Git: Amazing Game Loop
+## Työn jatkaminen
 
-Jatkossa voit seurata looppia, joka toistaa aina samoja vaiheita. Tämä on kuvattuna alla olevassa kuvassa. Huomaathan, että ohjetta tulee noudattaa täsmällisesti. Mikäli jätät vaiheita tekemättä, tai teet joitakin hatusta keksittyjä vaiheita, voit joutua tilanteeseen jossa GitLabin näkemys repositoriosta (`origin/main`) ja sinun lokaali näkemys repositoriosta (`main`) eroavat. 
+### Git: Amazing Game Loop
 
-![git-amazing-game-loop](../images/git-amazing-game-loop.svg)
+Tämän osion voisi tiivistää yhteen ohjeeseen:
 
-**Kuvio 2**: *Gitin käyttö yksin (ilman tiimityötä) looppina. Työ aloitetaan aina `git pull` ja lopetetaan `git push` komentoihin.*
+![](../images/muinainen-viisaus.png)
 
-Sama alla tekstimuotoisena:
+**Kuvio 2**: *ChatGPT:n generoima kuva.*
+
+Jos tätä viisautta hieman avaa, niin jatkossa voit seurata looppia, jossa toistat aina samoja vaiheita. Tämä on kuvattuna alla olevassa kuvaajassa. Huomaathan, että ohjetta tulee noudattaa täsmällisesti. Mikäli jätät vaiheita tekemättä, tai teet joitakin hatusta keksittyjä vaiheita, voit joutua tilanteeseen jossa GitLabin näkemys repositoriosta (`origin/main`) ja sinun lokaali näkemys repositoriosta (`main`) eroavat. Kun nämä `git pull` ja `git push` välissä olevat vaiheet avaa, ne ovat seuraavan koodisnippetin kaltaiset:
 
 ```bash
-# Aloita uusi päivä varmistamalla että sinun repo on samassa tilassa kuin origin/main.
-# ... ja sehän on, jos noudatat ohjetta.
+# Aloita uusi työskentelysessio
 $ git pull
-Already up to date
 
 #####################################
 # TEE MUUTOKSIA TÄSSÄ VÄLISSÄ       #
 # VALITSEMALLASI TEKSTIEDITORILLA   #
 #####################################
 
-# Varmista, että status näkee haluamasi muutokset 
+# Varmista, että status listaa haluamasi muutokset 
 $ git status -u
 
-# Lisää kaikki äsken statuksen näyttämäsi muutokset stagingiin
+# Lisää kaikki muutokset indeksiin
 $ git add .
 
 # Tee muutoksista commit
 $ git commit -m "A short comment that describes the changes that were made."
 
-# Puske muutokset GitLabiin
+# Puske commit origin/main eli GitLab
 $ git push
 
 #########################
@@ -148,21 +150,55 @@ $ git push
 
 
 
-### Mahdolliset konfliktit
+### Git: When Conflict Strikes Back
 
-Konfliktit ovat mahdollisia **vain jos et noudata ohjetta**. Konflikteja voi syntyä erityisesti silloin jos työskentelet vuoroparein kahdella tai useammalla eri tietokoneella, jolloin sinulla voi olla sama repositorio eri paikoissa eri ajassa - jos et siis ole noudattanut ohjetta. Tunnistat tämän tilanteen siitä, että `git pull` palauttaa jotakuinkin seuraavan:
+Konfliktit ovat mahdollisia **vain jos et noudata ohjetta**. Konflikteja voi syntyä erityisesti silloin jos työskentelet vuoroparein kahdella tai useammalla eri tietokoneella, jolloin sinulla voi olla sama repositorio eri paikoissa eri ajassa – jos et siis ole noudattanut ohjetta. Tunnistat tämän tilanteen siitä, että `git push` palauttaa jotakuinkin seuraavan:
 
-```bash
-$ git pull
-Auto-merging some-file-name
-CONFLICT (content): Merge conflict in some-file-name
-Automatic merge failed; fix conflicts and then commit the result.
-```
+![](../images/soolokayttaja_git_push_error.png)
 
-Tämä johtuu todennäköisemmin siitä, että et ole lopettanut edellistä päivää `git push`-komennolla. Jos näin pääsee käymään, ==ÄLÄ PANIKOI== vaan katso rauhallisesti video-ohje [GitLab: Ryhmäkäytön ohje](./ryhmakayttaja.md)
+**Kuvio 3**: *Virheilmoitus, joka ilmenee, jos `git push` epäonnistuu.*
+
+Tämä johtuu todennäköisemmin siitä, että et ole aloittanut tuoretta päivää `git pull`-komennolla. Jos näin pääsee käymään, ==ÄLÄ PANIKOI==. Alla on upotettuna video, jossa tämä ongelma ratkaistaan seuraavin vaihein:
+
+#### Vaiheet: Eri tiedostot
+
+- [x] Aloitetaan repositoriosta, jossa on pelkkä `my_favorite_colors.md` -tiedosto.
+- [x] Työskennellään koneella SCHOOL 🏫.
+    * Luodaan uusi tiedosto: `koulussa-luotu.txt`.
+    * Add + Commit + Push
+- [x] Siirrytään koneelle HOME 🏡.
+    * ==Unohdetaan== tehdä `git pull`
+    * Muokataan `my_favorite_colors.md`-tiedostoa (johon SCHOOL 🏫 -koneella ei kajottu).
+    * Add + Commit + Push → tulee varoitus
+    * Korjataan tilanne: `git pull` (tai `git pull --no-ff` jos `pull.ff=only`)
+    * Git ratkaisee tilanteen. Ongelma on koneelle helppo, koska tiedostot ovat eri.
+    * Push onnistuu
+
+#### Vaiheet: Päällekkäiset muutokset
+
+- [x] Työskennellään koneella SCHOOL 🏫.
+    * Muokataan tiedostoa `my_favorite_colors.md`
+    * Add + Commit + Push
+- [x] Siirrytään koneelle HOME 🏡.
+    * ==Unohdetaan== tehdä `git pull`
+    * Muokataan ==samaa tiedostoa== `my_favorite_colors.md`
+    * Commit + Push → tulee konfliktivaroitus
+    * Korjataan tilanne: `git pull [--no-ff]`
+    * Avataan VS Coden 3-way merge editor
+        - Painetaan **Resolve in Merge Editor**
+        - Valitaan halutut muutokset
+        - Merkitään tiedosto ratkaistuksi
+        - (Toistetaan kunnes konfliktit count näyttää 0.)
+    * Suoritetaan uusi Commit
+    * Push onnistuu
+
+#### Vaiheet videona
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_EMJkH2dzWY?si=jumzqkvbna9uyo9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Video 1:** *Yllä listatut vaiheet video-oppaan muodossa.*
 
 
+## Tämän ohjeen rajoitteet
 
-### Tämän ohjeen rajoitteet
-
-Korostan vielä, että tämä ohje on pätevä vain siinä (harvinaisen) yksinkertaisessa tilanteessa, että **sinä olet ainut henkilö joka puskee muutoksia repoon**. Tämä ei toimi ryhmätöiden kanssa. Käytä brancheja, jos tekijöitä on enemmän kuin yksi. Ryhmätyössä konflikteilta ei voi välttyä, mutta branchien käyttö helpottaa niiden ratkaisua. Yksin työskennellessä branchit ovat makuasia - ellei jokin kurssitehtävä vaadi branchien käyttöä. Tähän on erillinen ohje: [GitLab: Ryhmäkäytön ohje](./ryhmakayttaja.md)
+Korostan vielä, että tämä ohje on pätevä vain siinä (harvinaisen) yksinkertaisessa tilanteessa, että **sinä olet ainut henkilö joka puskee muutoksia repoon**. Tämä ei toimi ryhmätöiden kanssa. Käytä brancheja, jos tekijöitä on enemmän kuin yksi. Ryhmätyössä konflikteilta ei useimmiten voi välttyä, mutta branchien käyttö helpottaa niiden ratkaisua. Yksin työskennellessä branchit ovat makuasia - ellei jokin kurssitehtävä vaadi branchien käyttöä. Tähän on erillinen ohje: [GitLab: Ryhmäkäytön ohje](./ryhmakayttaja.md)

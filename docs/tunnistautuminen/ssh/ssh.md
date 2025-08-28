@@ -71,6 +71,12 @@ Kun olet lisännyt avaimen käyttämäsi palvelun portaaliin, on hyvä varmistaa
     $ ssh -T ssh://git@repo.kamit.fi:45065
     ```
 
+=== "gitlab.dclabra.fi"
+
+    ```sh
+    $ ssh -T git@gitlab.dclabra.fi
+    ```
+
 === "Github"
     ```sh
     $ ssh -T git@github.com
