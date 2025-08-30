@@ -32,7 +32,7 @@ git config --global --list
 
 
 
-## Muut suositellut konfiguraatiot
+## Suositellut konfiguraatiot
 
 Gittiä voi konfiguroida monin tavoin. Alla on esiteltynä muutama, äärimmäisen suositeltu konfiguraatio.
 
