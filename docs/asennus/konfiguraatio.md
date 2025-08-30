@@ -40,7 +40,7 @@ Gittiä voi konfiguroida monin tavoin. Alla on esiteltynä muutama, äärimmäis
 
 #### Rivinvaihdot
 
-Aloitetaan rivivaihdoilla. Windowsissa rivinvaihto - eli enterin painaminen tekstitiedostoa muokatessa - kirjoittaa tiedostoon kaksi merkkiä: `CR` ja `LF`, jotka tunnetaan nimillä `Carriage Return` ja `Line Feed`. UNIX-pohjaisissa käyttöjärjestelmissä käytetään vain toista merkkiä eli `LF`.  Tämä usein on jo valmiiksi Git for Windows -asennuksessa oikein asetettuna.
+Windowsissa rivinvaihto - eli enterin painaminen tekstitiedostoa muokatessa - kirjoittaa tiedostoon kaksi merkkiä: `CR` ja `LF`, jotka tunnetaan nimillä `Carriage Return` ja `Line Feed`. UNIX-pohjaisissa käyttöjärjestelmissä käytetään vain toista merkkiä eli `LF`.  Tämä usein on jo valmiiksi Git for Windows -asennuksessa oikein asetettuna. Alla oleva konfiguraatio asettaa rivinvaihdot siten, että ne ovat sinun koneellasi sinun käyttöjärjestelmälle tutussa formaatissa. Tämä on usein hyvä default. Lue alta poikkeus.
 
 ```bash
 # Windows
@@ -50,9 +50,36 @@ git config --global core.autocrlf true
 git config --global core.autocrlf input
 ```
 
-**TEHTÄVÄ:** Tarkista, että yllä oleva asetus on kunnossa. Git for Windows -asennus laittaa sen yleisesti oikeaan asentoon, mutta tarkista tuo, jotta opit käyttämään konfiguraatioon liittyviä komentoja.
+!!! warning "Poikkeustilanne: hostin ja kontin väliset eroavaisuudet"
 
+    Yllä olevaan konfiguraatioon löytyy poikkeustilanne. Tämä tarkoittaa, että jos työskentelet Windowsisssa siten, että ==kirjoittamasi koodi ajetaan UNIX-pohjaisessa ympäristössä== (esim. Docker-kontti, Linux-virtuaalikone), on tärkeää varmistaa, että rivinvaihdot ovat `LF`-muodossa. Muutoin siirrät kontin sisään (esim. mountilla `-v <host_path>:<container_path>`) tiedostoja, joissa rivinvaihdot ovat väärässä muodossa. Koodin suoritus tulee kaatumaan. Aloita luomalla projektikansiosi juureen seuraavanlainen konfiguraatiotiedosto, jonka nimi on pakko olla `.gitattributes`. Lisää vähintään ensimmäinen rivi, kuten alla neuvottu, ja tarpeen mukaan sille poikkeuksia, kuten on myös neuvottu koodisnippetissä.
 
+    ```text title=".gitattributes"
+    # Lisää tämä rivi tiedostoon:
+    * text=auto eol=lf
+
+    # Jos jonkin tiedoston on pakko olla Windows-rivinvaihdollinen,
+    # lisää sille poikkeuksia näin:
+    *.bat eol=crlf
+    *.ps1 eol=crlf
+    # ... jne ....
+    ```
+
+    Seuraavaksi pakota VS Code käyttämään tätä konfiguraatiota. Avaa VS Code ja luo projektiisi uusi tiedosto polkuun `.vscode/settings.json`. Tämä tiedosto on VS Codelle viesti, että haluat käyttää projektikohtaisia poikkeusasetuksia. Lisää tiedostoon seuraavat rivit:
+
+    ```json title=".vscode/settings.json"
+    {
+        "files.eol": "\n"
+    }
+    ```
+
+    Näin olet pakottanut VS Coden käyttämään UNIX-tyylistä rivinvaihtoa. Tämä muutos ei koska olemassaolevia tiedostoja. Kenties helpoin tapa korjata tämä on:
+
+    1. Lisää tuoreet muutokset gittiin (git add, commit, push)
+    2. Tuhoa koko hakemisto
+    3. Kloonaa projekti uusiksi, jolloin muutokset tulevat voimaan.s
+
+    Vältä jatkossa muokkaamasta kyseisen projektin tiedostoja muilla ohjelmilla kuin VS Codella.
 
 #### Pullin strategia
 
@@ -61,9 +88,6 @@ Mikäli ajat komennon `git pull` tai `git pull origin main` ennen omaa `git push
 ```bash
 git config --global pull.ff only
 ```
-
-
-
 
 
 #### Tekstieditori
@@ -88,10 +112,4 @@ Oletuksen voi vaihtaa seuraavalla komennolla:
 git config --global init.defaultBranch main
 ```
 
-#### Värit
 
-Värit auttavat muun muassa `git status` ja `git log` -komentojen tulostuksia lukemaan. Värit saa päälle seuraavalla komennolla:
-
-```bash
-git config --global color.ui auto
-```
