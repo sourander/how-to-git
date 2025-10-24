@@ -14,32 +14,29 @@ Tee `README.md` ja `LICENSE` ja lisäksi tarpeen mukaan jokin wiki/blogi/saitti/
 
 ## Älä laita suuria binääritiedostoja gittiin (💾)
 
-Tutustu `.gitignore`-tiedostoon. Kyseessä on projektin juuressa, eli siis samassa hakemistossa missä on `.git/`-hakemisto, sijaitseva git-projektin konfiguraatiotiedosto.
+Tutustu `.gitignore`-tiedostoon. Kyseessä on projektin juuressa, eli siis samassa hakemistossa missä on `.git/`-hakemisto, sijaitseva git-projektin konfiguraatiotiedosto. Tiedostossa listatut tiedostot ja hakemistot jätetään huomiotta gitin toimesta. Tämä tarkoittaa, että ne eivät näy `git status`-komennon tulosteessa, niitä ei voi lisätä `git add`-komennolla eikä niitä lähetetä etärepositorioon `git push`-komennolla. On luontevaa, että tiedostoon lisätään esimerkiksi seuraavat kohteet:
 
-Githubin [github / gitignore](https://github.com/github/gitignore) reposta löytyy useille eri kielille esimerkkejä, joista voi katsoa esimerkkejä. Parempia tapa on kuinkin ajaa aina ennen `git add` -komentoa komento `git status -u`.
+* `build/`-hakemisto, jos ohjelmasi tuottaa binääritiedostoja käännösvaiheessa
+* `data/`-hakemisto, jos ohjelmasi käsittelee suuria datatiedostoja, joita ei ole tarkoitus versionhallita
+* `*.log`, `*.tmp` ja muut väliaikaiset tiedostot, joita ohjelmasi tuottaa ajon aikana
+
+Githubin [gh:github/gitignore](https://github.com/github/gitignore) reposta löytyy useille eri kielille esimerkkejä, joista voi katsoa esimerkkejä. Kenties parempi käytäntö on kuitenkin ajaa `git status -u` aina ennen `git add .` -komentoa ja tarkistaa, että mitään ylimääräistä ei ole tulossa mukaan. Jos on, muokkaa `.gitignore`-tiedostoa ja tarkista `git status -u` uudelleen, kunnes plörö on poissa.
 
 
 
 ## ... jos kuitenkin laitat binääritiedostoja gittiin (💾)
 
-Joskus gitti osoittautuu ainoaksi sopivaksi tietyille tiedostoille, kuten dokumentaatioon tai testaamiseen liittyville tiedostoille. Tämä voi olla OK-ratkaisu, olettaen että tiedostot eivät ole useiden gigatavujen kokoisia vaan mieluummin kilo- tai megatavuluokassa. Mikäli teet näin, luo tiedosto `.gitattributes`. Kyseinen konfiguraatiotiedosto mahdollistaa, että voit määrittää käsin, mitkä projektin tiedostot ovat binääriä.
+Joskus gitti osoittautuu ainoaksi sopivaksi tietyille tiedostoille, kuten dokumentaatioon tai testaamiseen liittyville tiedostoille. Opetuskäytössä GitLabiin voi sijoittaa myös koneoppimismallin koulutukseen käytettyä dataa – ainakin järjellisissä määrin. Tällöin on hyvä arvioida seuraavat vaihtoehdot:
 
-```
-*.obj binary
-*.exe binary
-*.dat binary
-*.wav binary
-```
+* Jos tiedostoja on useita kymmeniä gigatavuja, sijoita ne muualle, kuten AWS S3:een tai Azure Blob Storageen, ja luo skripti, joka lataa datan tarvittaessa paikalliseksi.
+* Jos tiedostojen koko on maksimissaan pari gigaa, käytä Git LFS:ää (Large File Storage), joka on suunniteltu erityisesti suurten tiedostojen hallintaan git-repositorioissa, ja meidän DC-labran GitLab tukee tätä ominaisuutta. Tähän löytyy helppo ohje [GitLab: Git LFS](lfs.md)-luvusta.
 
-Mikäli tiedostot ovat satojen megatavujen tai gigatavujen kokoisia, lisääthän mieluummin `README.md`-tiedostoon ohjeet, mistä ne voi ladata. Näppärä koodari voi jopa tehdä skriptitiedoston, joka lataa ne automaattisesti oikeaan lokaatioon esimerkiksi AWS S3:sta, Azure Blob Storagesta, CSC:n Allas-palvelusta tai vaikka OneDrive/Sharepointista.
-
-Suurten tiedostojen kanssa voit käyttää myös Git LFS:ää (Large File Storage), joka on suunniteltu erityisesti suurten tiedostojen hallintaan git-repositorioissa, ja meidän DC-labran GitLab tukee tätä ominaisuutta. Tähän löytyy helppo ohje GitLabin sivuilta: [Getting started with Git LFS](https://about.gitlab.com/blog/getting-started-with-git-lfs-tutorial/#local-machine) alkaen otsikosta "Local machine" ja loppuen otsikkoon "Track as early as possible".
-
+Jos olet epävarma, kysy kurssin opettajalta.
 
 
 ## Ymmärrä, älä muista (🧠)
 
-Ethän aja git-komentoja `hauki on kala hauki on kala`-metodilla ulkoa muistellen, ymmärtämättä mitä ne tekevät. Gitin käyttö on hyvin dokumentoituna Githubin, Gitlabin ja muiden palveluiden sivuilla sekä ilmaisessa Pro Git -kirjassa. Käytä niitä hyväksesi; lue niitä ajatuksella. Kun ymmärrät, muistitaakka vähenee.
+Ethän aja git-komentoja `hauki on kala hauki on kala`-metodilla ulkoa muistellen, ymmärtämättä mitä ne tekevät. Gitin käyttö on hyvin dokumentoituna Githubin, Gitlabin ja muiden palveluiden sivuilla sekä ilmaisessa Pro Git -kirjassa sekä tällä sivustolla. Käytä ohjeita hyväksesi; lue niitä ajatuksella. Kun ymmärrät, muistitaakka vähenee.
 
 
 
