@@ -116,9 +116,9 @@ Kun olet joko kloonannut olemassa olevan repositorion tai luonut uuden, voit jat
 
 Tämän osion voisi tiivistää yhteen ohjeeseen:
 
-![](../images/muinainen-viisaus.png)
+![](../images/muinainen-viisaus.jpg)
 
-**Kuvio 2**: *ChatGPT:n generoima kuva.*
+**Kuvio 2**: *Gemini Pro:n (Nano Banana) näkemys 2000 vuotta ennen ajanlaskua luodusta viisaudesta.*
 
 Jos tätä viisautta hieman avaa, niin jatkossa voit seurata looppia, jossa toistat aina samoja vaiheita. Tämä on kuvattuna alla olevassa kuvaajassa. Huomaathan, että ohjetta tulee noudattaa täsmällisesti. Mikäli jätät vaiheita tekemättä, tai teet joitakin hatusta keksittyjä vaiheita, voit joutua tilanteeseen jossa GitLabin näkemys repositoriosta (`origin/main`) ja sinun lokaali näkemys repositoriosta (`main`) eroavat. Kun nämä `git pull` ja `git push` välissä olevat vaiheet avaa, ne ovat seuraavan koodisnippetin kaltaiset:
 
