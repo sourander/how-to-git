@@ -43,8 +43,6 @@ Git LFS on asennettavissa useilla eri tavoilla riippuen käyttöjärjestelmäst�
 
 === "Ubuntu"
 
-    The apt repositories tend to update slowly, so it's recommended to use the official Git LFS package source, as explained in the [gh:git-lfs/INSTALLING.md](https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md)
-
     Ubuntun omat APT-repositoriot päivittyvät hitaasti, joten on suositeltavaa käyttää virallista Git LFS -pakettien lähdettä, kuten selitetty osoitteessa [gh:git-lfs/INSTALLING.md](https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md). Tarkista ohje alkuperäisestä lähteestä. Tässä kuitenkin tiivistetty versio:
 
     ```bash
@@ -54,6 +52,8 @@ Git LFS on asennettavissa useilla eri tavoilla riippuen käyttöjärjestelmäst�
     # Install git-lfs
     sudo apt install git-lfs
     ```
+
+---
 
 ### Aktivoi Git-clientissa
 
